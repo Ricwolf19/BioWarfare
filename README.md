@@ -1,9 +1,9 @@
-# 🧫 BioWarfare
-![BioWarfare Logo](./Assets/Brand/Logo.jpg)
+<div align="center">
+<img src="./Assets/Brand/Logo.jpg" alt="BioWarfare Logo" width="400" height="200">
 
-> *"In 2027, science becomes the only weapon left against extinction."*
+> _"In 2027, science becomes the only weapon left against extinction."_
 
----
+</div>
 
 ### 🎮 Overview
 
@@ -15,27 +15,27 @@ Armed with experimental **bio-weapons** and purification tools, Jhony must fight
 
 ### 🧩 Core Features
 
-- 🧠 **Immersive Storyline:** Deep narrative inspired by post-pandemic bioethics and scientific responsibility.  
-- ⚗️ **Bio-Weapon System:** Craft and upgrade purification tools and antidotes.  
-- 🧟 **Grimer AI:** Mutated entities with reactive and adaptive behavior.  
-- 💉 **Purification Mechanics:** Sanitize zones, neutralize infection spread, and restore safety.  
-- 🧱 **Built in Unity 2023 LTS:** Full CI/CD workflow and versioned builds.  
-- 🧰 **DevOps Integration:** Git-based workflow, automated builds, and testing pipeline.  
+- 🧠 **Immersive Storyline:** Deep narrative inspired by post-pandemic bioethics and scientific responsibility.
+- ⚗️ **Bio-Weapon System:** Craft and upgrade purification tools and antidotes.
+- 🧟 **Grimer AI:** Mutated entities with reactive and adaptive behavior.
+- 💉 **Purification Mechanics:** Sanitize zones, neutralize infection spread, and restore safety.
+- 🧱 **Built in Unity 2023 LTS:** Full CI/CD workflow and versioned builds.
+- 🧰 **DevOps Integration:** Git-based workflow, automated builds, and testing pipeline.
 - 🧾 **Scrum Management:** Jira Sprints and Agile documentation for production tracking.
 
 ---
 
 ### 🧪 Technical Stack
 
-| Category | Technologies |
-|-----------|---------------|
-| **Engine** | Unity 2023 LTS (URP) |
-| **Language** | C# (.NET 8) |
-| **Version Control** | Git + GitHub |
-| **Build Pipeline** | GitHub Actions (CI/CD) |
-| **Project Management** | Scrum + Jira |
-| **Documentation** | Markdown + PDF (DevOps, PWA, Testing Plans) |
-| **Platform Targets** | Windows / Linux / macOS |
+| Category               | Technologies                                |
+| ---------------------- | ------------------------------------------- |
+| **Engine**             | Unity 2023 LTS (URP)                        |
+| **Language**           | C# (.NET 8)                                 |
+| **Version Control**    | Git + GitHub                                |
+| **Build Pipeline**     | GitHub Actions (CI/CD)                      |
+| **Project Management** | Scrum + Jira                                |
+| **Documentation**      | Markdown + PDF (DevOps, PWA, Testing Plans) |
+| **Platform Targets**   | Windows / Linux / macOS                     |
 
 ---
 
@@ -43,11 +43,11 @@ Armed with experimental **bio-weapons** and purification tools, Jhony must fight
 
 > "We build with science — deploy with DevOps."
 
-1. **Version Control** — Managed under Git using feature-based branches.  
-2. **Continuous Integration** — Automated Unity builds and testing in pipeline.  
-3. **Continuous Delivery** — Exported artifacts and semantic version tagging.  
-4. **Scrum Practices** — Two-week sprints, Jira backlog, and retrospective reports.  
-5. **Testing** — EditMode & PlayMode tests with Unity Test Framework.  
+1. **Version Control** — Managed under Git using feature-based branches.
+2. **Continuous Integration** — Automated Unity builds and testing in pipeline.
+3. **Continuous Delivery** — Exported artifacts and semantic version tagging.
+4. **Scrum Practices** — Two-week sprints, Jira backlog, and retrospective reports.
+5. **Testing** — EditMode & PlayMode tests with Unity Test Framework.
 
 ---
 
@@ -59,7 +59,7 @@ A former UACH medical researcher and one of the best surgeons in the country. Af
 
 ### 🧬 Story Summary
 
-> *Rifle, Texas — Year 2027.*  
+> _Rifle, Texas — Year 2027._  
 > The hospital once known for its excellence has turned into the cradle of infection.  
 > Negligence in a patient’s isolation led to the mutation of a dormant virus, now spreading through every floor.  
 > Those infected — **Grimers** — are conscious, aggressive, and terrifyingly intelligent.  
@@ -72,7 +72,7 @@ A former UACH medical researcher and one of the best surgeons in the country. Af
 🚧 **Status:** Pre-Alpha `v0.1.0`  
 ✅ Core systems under development  
 🏗️ CI/CD, Scrum workflow, and testing plan in progress  
-📦 First playable build planned for: *Sprint 3*
+📦 First playable build planned for: _Sprint 3_
 
 ---
 
@@ -117,21 +117,21 @@ You are free to use, modify, and distribute this project, provided that proper c
 ### 🧠 Developers
 
 **Universidad Tecnológica de Chihuahua – División de Tecnologías de la Información**  
-*Project Type:* Integrator / DevOps & Game Development  
-*Lead Developer:* Ricardo Tapia
-*Unity Engine:* 2023.3 LTS  
-*Year:* 2025  
+_Project Type:_ Integrator / DevOps & Game Development  
+_Lead Developer:_ Ricardo Tapia
+_Unity Engine:_ 2023.3 LTS  
+_Year:_ 2025
 
 ---
 
 ### 🧩 Credits
 
-- **Story & Design:** UTCH Game Development Team  
-- **Programming & CI/CD:** Bio-Warfare Team  
-- **Documentation:** DevOps Integration Report, PWA Research, Sprint Reports  
-- **Special Thanks:** Universidad Tecnológica de Chihuahua professors and mentors  
+- **Story & Design:** UTCH Game Development Team
+- **Programming & CI/CD:** Bio-Warfare Team
+- **Documentation:** DevOps Integration Report, PWA Research, Sprint Reports
+- **Special Thanks:** Universidad Tecnológica de Chihuahua professors and mentors
 
 ---
 
 > _"Cleanse the infection. Purify the world. Survive the truth."_  
-> — *BioWarfare*
+> — _BioWarfare_
