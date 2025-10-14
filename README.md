@@ -1,5 +1,5 @@
-# 🧫 Bio Warfare
-![Bio Warfare Logo](./Assets/Brand/logo.png)
+# 🧫 BioWarfare
+![BioWarfare Logo](./Assets/Brand/Logo.jpg)
 
 > *"In 2027, science becomes the only weapon left against extinction."*
 
@@ -7,7 +7,7 @@
 
 ### 🎮 Overview
 
-**Bio Warfare** is a **first-person survival horror** game developed in **Unity 2023 LTS** as an **integrator project for the Universidad Tecnológica de Chihuahua**.  
+**BioWarfare** is a **first-person survival horror** game developed in **Unity 2023 LTS** as an **integrator project for the Universidad Tecnológica de Chihuahua**.  
 Set in a post-pandemic world, the player becomes **Dr. Jhony**, a brilliant physician who awakens from a seven-year coma only to face a horrifying mutation outbreak within a decaying hospital.  
 Armed with experimental **bio-weapons** and purification tools, Jhony must fight the grotesque **Grimers** and uncover the truth behind the virus.
 
@@ -134,4 +134,4 @@ You are free to use, modify, and distribute this project, provided that proper c
 ---
 
 > _"Cleanse the infection. Purify the world. Survive the truth."_  
-> — *Bio Warfare*
+> — *BioWarfare*
