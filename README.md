@@ -1,5 +1,5 @@
 <div align="center">
-<img src="./Assets/Brand/Logo.jpg" alt="BioWarfare Logo" width="400" height="200">
+<img src="./Assets/Brand/Logo.jpg" alt="BioWarfare Logo" width="300" height="300">
 
 > _"In 2027, science becomes the only weapon left against extinction."_
 
