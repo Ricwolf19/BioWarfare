@@ -1,4 +1,5 @@
 using UnityEngine;
+using cowsins; 
 
 namespace Art_Equilibrium
 {
@@ -7,9 +8,10 @@ namespace Art_Equilibrium
         private bool trig = false;
         private bool open = false;
         private bool isKeyPressed = false;
+        private InputManager inputManager; 
 
-        public float smooth = 2.0f; // скорость открытия
-        public Vector3 openOffset = new Vector3(0, 0, 0.3f); // локальное смещение открытия
+        public float smooth = 2.0f; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+        public Vector3 openOffset = new Vector3(0, 0, 0.3f); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 
         private Vector3 closedLocalPos;
         private Vector3 openedLocalPos;
@@ -29,12 +31,20 @@ namespace Art_Equilibrium
         public AudioClip closeSound;
         private AudioSource audioSource;
 
-        private void Start()
+       private void Start()
         {
             closedLocalPos = transform.localPosition;
             openedLocalPos = closedLocalPos + openOffset;
-
+            isKeyPressed = false;
+            
             audioSource = gameObject.AddComponent<AudioSource>();
+            
+            // ADD THESE LINES:
+            inputManager = FindObjectOfType<InputManager>();
+            if (inputManager == null)
+            {
+                Debug.LogWarning("[AE_Drawer] InputManager not found. Drawer interactions may not work.");
+            }
         }
 
         private void Update()
@@ -42,16 +52,20 @@ namespace Art_Equilibrium
             Vector3 targetLocalPos = open ? openedLocalPos : closedLocalPos;
             transform.localPosition = Vector3.Lerp(transform.localPosition, targetLocalPos, Time.deltaTime * smooth);
 
-            if (Input.GetKeyDown(KeyCode.E) && trig && !isKeyPressed)
+            // Use the new Input System via FPS Engine's InputManager
+            if (inputManager != null)
             {
-                open = !open;
-                isKeyPressed = true;
-                PlaySound();
-            }
+                if (inputManager.StartInteraction && trig && !isKeyPressed)
+                {
+                    open = !open;
+                    isKeyPressed = true;
+                    PlaySound();
+                }
 
-            if (Input.GetKeyUp(KeyCode.E))
-            {
-                isKeyPressed = false;
+                if (!inputManager.Interacting)
+                {
+                    isKeyPressed = false;
+                }
             }
 
             drawerMessage = trig ? (open ? closeMessage : openMessage) : "";

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using cowsins;
 
 namespace Art_Equilibrium
 {
@@ -13,6 +14,7 @@ namespace Art_Equilibrium
         private Vector3 targetLocalSlidePos;
 
         private bool isKeyPressed;
+        private InputManager inputManager;
 
         [Header("Door Type")]
         public bool isSlidingDoor = false;                  // Тумблер: обычная или раздвижная
@@ -42,6 +44,13 @@ namespace Art_Equilibrium
             isKeyPressed = false;
 
             audioSource = gameObject.AddComponent<AudioSource>();
+            
+            // Find the FPS Engine InputManager
+            inputManager = FindObjectOfType<InputManager>();
+            if (inputManager == null)
+            {
+                Debug.LogWarning("[AE_Door] InputManager not found. Door interactions may not work.");
+            }
         }
 
         private void Update()
@@ -57,16 +66,20 @@ namespace Art_Equilibrium
                 transform.rotation = Quaternion.Slerp(transform.rotation, targetRot, Time.deltaTime * smooth);
             }
 
-            if (Input.GetKeyDown(KeyCode.E) && trig && !isKeyPressed)
+            // Use the new Input System via FPS Engine's InputManager
+            if (inputManager != null)
             {
-                open = !open;
-                isKeyPressed = true;
-                PlayDoorSound();
-            }
+                if (inputManager.StartInteraction && trig && !isKeyPressed)
+                {
+                    open = !open;
+                    isKeyPressed = true;
+                    PlayDoorSound();
+                }
 
-            if (Input.GetKeyUp(KeyCode.E))
-            {
-                isKeyPressed = false;
+                if (!inputManager.Interacting)
+                {
+                    isKeyPressed = false;
+                }
             }
 
             doorMessage = trig ? (open ? closeMessage : openMessage) : "";
