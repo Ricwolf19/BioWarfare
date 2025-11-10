@@ -18,6 +18,7 @@ namespace cowsins
         {
             GameObjectTransition,
             SceneTransition,
+            QuitGame,
             Other
         }
 
@@ -81,12 +82,28 @@ namespace cowsins
                 else
                     Debug.LogWarning("<color=red>[COWSINS]</color> Scene not assigned for CowsinsButton.", this);
             }
+            else if (buttonType == ButtonType.QuitGame)
+            {
+                QuitGame();
+            }
         }
         public override void OnPointerEnter(PointerEventData eventData)
         {
             if(interactable)
                 SoundManager.Instance?.PlaySound(hoverSFX, 0, 0, false);
             base.OnPointerEnter(eventData);
+        }
+
+        /// <summary>
+        /// Quits the game. Works in both Editor and Build.
+        /// </summary>
+        private void QuitGame()
+        {
+#if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+#else
+            Application.Quit();
+#endif
         }
 
 
