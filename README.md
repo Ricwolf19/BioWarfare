@@ -1,107 +1,198 @@
 <div align="center">
-<img src="./Assets/Brand/Logo.jpg" alt="BioWarfare Logo" width="300" height="300">
+<img src="./Assets/Brand/Logo/Big_IsoType.png" alt="BioWarfare Logo" width="400">
+
+# BioWarfare
 
 > _"In 2027, science becomes the only weapon left against extinction."_
 
+[![Unity](https://img.shields.io/badge/Unity-2022.3_LTS-black.svg?style=flat&logo=unity)](https://unity.com/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Status](https://img.shields.io/badge/Status-Alpha-orange.svg)]()
+
 </div>
 
-### 🎮 Overview
+## 🎮 Overview
 
-**BioWarfare** is a **first-person survival horror** game developed in **Unity 2023 LTS** as an **integrator project for the Universidad Tecnológica de Chihuahua**.  
-Set in a post-pandemic world, the player becomes **Dr. Jhony**, a brilliant physician who awakens from a seven-year coma only to face a horrifying mutation outbreak within a decaying hospital.  
-Armed with experimental **bio-weapons** and purification tools, Jhony must fight the grotesque **Grimers** and uncover the truth behind the virus.
+**BioWarfare** is a **first-person survival horror shooter** developed in **Unity 6** as an **integrator project for the Universidad Tecnológica de Chihuahua**.  
 
----
+Set in a post-pandemic world within **The Horror Hospital**, players must survive against intelligent AI enemies in a tense, atmospheric environment. The game combines modern FPS mechanics with horror survival elements, featuring advanced AI behavior, interactive environments, and intense combat scenarios.
 
-### 🧩 Core Features
+### 🎯 Project Goals
 
-- 🧠 **Immersive Storyline:** Deep narrative inspired by post-pandemic bioethics and scientific responsibility.
-- ⚗️ **Bio-Weapon System:** Craft and upgrade purification tools and antidotes.
-- 🧟 **Grimer AI:** Mutated entities with reactive and adaptive behavior.
-- 💉 **Purification Mechanics:** Sanitize zones, neutralize infection spread, and restore safety.
-- 🧱 **Built in Unity 2023 LTS:** Full CI/CD workflow and versioned builds.
-- 🧰 **DevOps Integration:** Git-based workflow, automated builds, and testing pipeline.
-- 🧾 **Scrum Management:** Jira Sprints and Agile documentation for production tracking.
+- **Asset Integration:** Successfully integrate three professional Unity assets into a cohesive game experience
+- **Technical Excellence:** Implement modern input systems, AI navigation, and player-enemy interactions
+- **DevOps Practices:** Apply CI/CD workflows, version control, and Agile methodologies
+- **Academic Achievement:** Demonstrate technical proficiency for UTCH integrator project requirements
 
 ---
 
-### 🧪 Technical Stack
+## ✨ Core Features
+
+### 🎮 Gameplay
+- **Modern FPS Controls:** Smooth movement, sprinting, crouching, and weapon handling powered by Cowsins FPS Engine
+- **Intelligent AI Enemies:** Emerald AI system with detection, pathfinding, and combat behaviors
+- **Interactive Environment:** Doors, drawers, and objects from The Horror Hospital asset
+- **NavMesh Navigation:** AI enemies navigate the hospital using Unity's AI Navigation system
+- **Faction System:** Player vs Enemy faction-based combat with configurable relations
+- **Location-Based Damage:** Headshot and body part damage multipliers
+
+### �️ Technical Integration
+- **Input System:** Unity's new Input System integrated with FPS Engine
+- **Bridge Scripts:** Custom integration between FPS Engine and Emerald AI
+- **NavMeshSurface:** Modern NavMesh baking for AI pathfinding
+- **Modular Architecture:** Clean separation between player, AI, and environment systems
+
+### 🎨 Assets Used
+- **[Cowsins FPS Engine](https://cowsinss-organization.gitbook.io/fps-engine-documentation/)** - Complete FPS controller and weapon system
+- **[The Horror Hospital](https://assetstore.unity.com/packages/3d/environments/the-horror-hospital-310180)** - Atmospheric hospital environment
+- **[Emerald AI 2025](https://black-horizon-studios.gitbook.io/emerald-ai-wiki)** - Advanced AI behavior system
+
+---
+
+## 🧪 Technical Stack
 
 | Category               | Technologies                                |
 | ---------------------- | ------------------------------------------- |
-| **Engine**             | Unity 2023 LTS (URP)                        |
-| **Language**           | C# (.NET 8)                                 |
+| **Engine**             | Unity 6 (URP Render Pipeline)               |
+| **Language**           | C# (.NET Standard 2.1)                      |
+| **Input System**       | Unity Input System (Package 1.7.0+)         |
+| **AI Navigation**      | AI Navigation Package (2.0.0+)              |
 | **Version Control**    | Git + GitHub                                |
-| **Build Pipeline**     | GitHub Actions (CI/CD)                      |
-| **Project Management** | Scrum + Jira                                |
-| **Documentation**      | Markdown + PDF (DevOps, PWA, Testing Plans) |
-| **Platform Targets**   | Windows / Linux / macOS                     |
+| **IDE**                | Visual Studio Code / Rider                  |
+| **Project Management** | Scrum + Agile Methodology                   |
+| **Documentation**      | Markdown + Technical Reports                |
+| **Platform Target**    | Windows (Primary), macOS (Secondary)        |
+
+### 📦 Key Packages
+- **Cowsins FPS Engine** v1.2+ - Player controller and weapons
+- **Emerald AI 2025** - Enemy AI behavior and combat
+- **AI Navigation** v2.0+ - NavMesh and pathfinding
+- **Unity Input System** v1.7+ - Modern input handling
 
 ---
 
-### 🧠 Development Methodology
+## 🔧 Development Methodology
 
-> "We build with science — deploy with DevOps."
+> "Integrate with precision — deploy with confidence."
 
-1. **Version Control** — Managed under Git using feature-based branches.
-2. **Continuous Integration** — Automated Unity builds and testing in pipeline.
-3. **Continuous Delivery** — Exported artifacts and semantic version tagging.
-4. **Scrum Practices** — Two-week sprints, Jira backlog, and retrospective reports.
-5. **Testing** — EditMode & PlayMode tests with Unity Test Framework.
+### Agile Workflow
+1. **Sprint Planning** — Two-week sprints with clear deliverables
+2. **Version Control** — Git feature branches with descriptive commits
+3. **Code Integration** — Systematic asset integration with bridge pattern
+4. **Testing & Debugging** — Iterative testing of player-AI interactions
+5. **Documentation** — Detailed technical documentation of integration steps
 
----
-
-### 🧍‍♂️ Protagonist: Dr. Jhony
-
-A former UACH medical researcher and one of the best surgeons in the country. After seven years in a coma, he awakens in a devastated world and becomes humanity’s last hope against the viral abominations born of his own hospital’s negligence.
-
----
-
-### 🧬 Story Summary
-
-> _Rifle, Texas — Year 2027._  
-> The hospital once known for its excellence has turned into the cradle of infection.  
-> Negligence in a patient’s isolation led to the mutation of a dormant virus, now spreading through every floor.  
-> Those infected — **Grimers** — are conscious, aggressive, and terrifyingly intelligent.  
-> Jhony must use his medical knowledge to engineer weapons and purification systems to survive and save what remains of humankind.
+### Integration Challenges Solved
+- ✅ **Input System Conflicts** — Resolved legacy vs new Input System issues
+- ✅ **AI Detection** — Configured faction system and detection layers
 
 ---
 
-### 🧰 Project Status
+## 📊 Project Status
 
-🚧 **Status:** Pre-Alpha `v0.1.0`  
-✅ Core systems under development  
-🏗️ CI/CD, Scrum workflow, and testing plan in progress  
-📦 First playable build planned for: _Sprint 3_
+**Current Version:** Alpha `v0.3.0`  
+**Development Stage:** Integration Complete, Testing Phase
+
+### ✅ Completed Milestones
+- [x] FPS Engine integration and player controls
+- [x] Horror Hospital environment setup
+- [x] Emerald AI enemy implementation
+- [x] Input System migration (legacy → new)
+- [x] NavMesh baking and AI navigation
+- [x] Player-AI damage bridge scripts
+- [x] Faction system configuration
+- [x] Interactive objects (doors, drawers)
+- [x] UI button system with quit functionality
+
+### 🚧 In Progress
+- [ ] Additional enemy types and behaviors
+- [ ] Weapon variety and balancing
+- [ ] Sound effects and music integration
+- [ ] Level design and pacing
+- [ ] Performance optimization
+
+### 📅 Upcoming
+- [ ] Save/load system
+- [ ] Multiple levels/areas
+- [ ] Boss encounters
+- [ ] Final polish and bug fixes
 
 ---
 
-### 🧩 Repository Structure
+## 📁 Repository Structure
 
 ```
 BioWarfare/
 ├── Assets/
-│   ├── Scripts/
+│   ├── Cowsins/                          # FPS Engine (player controller, weapons)
+│   ├── The_Horror_Hospital/              # Environment and interactive objects
+│   │   └── Other/
+│   │       ├── AE_Door.cs               # Modified for new Input System
+│   │       └── AE_Drawer.cs             # Modified for new Input System
+│   ├── Emerald AI/                       # AI behavior system
+│   │   └── Integrations/
+│   │       └── FPS Engine/
+│   │           ├── FPSEnginePlayerBridge.cs
+│   │           └── FPSEngineAIBridge.cs
 │   ├── Scenes/
-│   ├── Art/
-│   └── Brand/logo.png
+│   │   └── SampleScene.unity            # Main game scene
+│   └── Brand/
+│       └── Logo/
+│           └── Big_IsoType.png          # Project logo
 ├── ProjectSettings/
+│   └── ProjectSettings.asset            # Input System configuration
 ├── Packages/
+│   ├── manifest.json
+│   └── packages-lock.json
 └── README.md
 ```
 
 ---
 
-### ⚙️ Setup & Run
+## ⚙️ Setup & Installation
 
-1. Clone the repository:
+### Prerequisites
+- **Unity 6** or newer
+- **Git** for version control
+- **Visual Studio Code** or **JetBrains Rider** (recommended)
+
+### Installation Steps
+
+1. **Clone the repository:**
    ```bash
-   git clone https://github.com/<your-username>/BioWarfare.git
+   git clone https://github.com/ricardotapia/BioWarfare.git
+   cd BioWarfare
    ```
-2. Open in **Unity 2023.3 LTS**
-3. Load the main scene:  
-   `Assets/Scenes/MainHospital.unity`
-4. Press ▶️ to run
+
+2. **Open in Unity Hub:**
+   - Open Unity Hub
+   - Click "Add" → Select the `BioWarfare` folder
+   - Open with Unity 6
+
+3. **Wait for package import:**
+   - Unity will import all assets and packages
+   - This may take 5-10 minutes on first load
+
+4. **Load the main scene:**
+   - Navigate to `Assets/Scenes/SampleScene.unity`
+   - Double-click to open
+
+5. **Configure Input System (if prompted):**
+   - Select "Yes" to enable the new Input System
+   - Unity will restart
+
+6. **Press Play ▶️ to run the game**
+
+### Controls
+- **WASD** - Movement
+- **Mouse** - Look around
+- **Left Click** - Shoot
+- **Right Click** - Aim
+- **Shift** - Sprint
+- **Ctrl** - Crouch
+- **E** - Interact (doors, drawers)
+- **R** - Reload
+- **ESC** - Pause menu
 
 ---
 
@@ -114,24 +205,70 @@ You are free to use, modify, and distribute this project, provided that proper c
 
 ---
 
-### 🧠 Developers
+## 👨‍💻 Development Team
 
-**Universidad Tecnológica de Chihuahua – División de Tecnologías de la Información**  
-_Project Type:_ Integrator / DevOps & Game Development  
-_Lead Developer:_ Ricardo Tapia
-_Unity Engine:_ 2023.3 LTS  
-_Year:_ 2025
+**Universidad Tecnológica de Chihuahua**  
+**División de Tecnologías de la Información**
+
+### Project Information
+- **Project Type:** Integrator Project (Game Development + DevOps)
+- **Lead Developer:** Ricardo Tapia (@ricardotapia)
+- **Institution:** UTCH - Universidad Tecnológica de Chihuahua
+- **Location:** Chihuahua, Mexico
+- **Unity Version:** 6
+- **Development Period:** 2024-2025
+- **Academic Year:** 2025
+
+### Contact
+- **Developer:** Ricardo Tapia
+- **Age:** 21 (Born March 2, 2004)
+- **Role:** Full Stack Developer @ PiByteLabs
+- **Experience:** 2+ years in web/game development
 
 ---
 
-### 🧩 Credits
+## 🙏 Credits & Acknowledgments
 
-- **Story & Design:** UTCH Game Development Team
-- **Programming & CI/CD:** Bio-Warfare Team
-- **Documentation:** DevOps Integration Report, PWA Research, Sprint Reports
-- **Special Thanks:** Universidad Tecnológica de Chihuahua professors and mentors
+### Assets Used
+- **Cowsins FPS Engine** - [Cowsins](https://cowsinss-organization.gitbook.io/fps-engine-documentation/)
+- **The Horror Hospital** - [Unity Asset Store](https://assetstore.unity.com/packages/3d/environments/the-horror-hospital-310180)
+- **Emerald AI 2025** - [Black Horizon Studios](https://black-horizon-studios.gitbook.io/emerald-ai-wiki)
+
+### Development Tools
+- **Unity Technologies** - Game engine and tools
+- **JetBrains Rider** - IDE for C# development
+- **Git & GitHub** - Version control
+- **Windsurf (Cascade AI)** - Development assistance and pair programming
+
+### Special Thanks
+- **Universidad Tecnológica de Chihuahua** - Academic support and resources
+- **UTCH Professors** - Guidance and mentorship
+- **Asset Creators** - For providing high-quality tools and assets
+- **Unity Community** - Documentation and support
+
+### Academic Context
+This project serves as an **integrator project** for the **Tecnologías de la Información** program at UTCH, demonstrating:
+- Technical integration skills
+- Problem-solving abilities
+- Software development best practices
+- Project management and documentation
+- DevOps and CI/CD workflows
 
 ---
 
-> _"Cleanse the infection. Purify the world. Survive the truth."_  
-> — _BioWarfare_
+---
+
+<div align="center">
+
+### 🎮 Play. Survive. Conquer.
+
+> _"In the depths of The Horror Hospital, only the strong survive."_
+
+**BioWarfare** — _A Unity Integrator Project_
+
+---
+
+**Made with 💚 in Chihuahua, Mexico**  
+**Universidad Tecnológica de Chihuahua © 2025**
+
+</div>
