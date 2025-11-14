@@ -1,0 +1,101 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.InputSystem;
+
+public class SineCameraControllerTopDownEffects : MonoBehaviour
+{
+
+    public new Camera camera;
+    public Transform basePivot;
+    public Transform farPivot;
+    public float scrollSpeed = 10f;
+    public float rotationSpeed = 10f;
+    public float rotationAmount = 2f;
+    [Range(10f, 40f)]
+    public float maximumAngle = 20f;
+
+    private float closeFar = 0.5f;
+    private float closeFarLerp = 0.5f;
+    private Vector3 mouseAxisToVector;
+    private float x;
+    private float y;
+    private Quaternion rotation;
+    private bool rotationPossible = false;
+
+    void Start()
+    {
+        rotation = gameObject.transform.localRotation;
+        mouseAxisToVector = new Vector3(0f, 0f, 0f);
+    }
+
+    // Changing the rotation of the Main Camera in Update
+    void Update()
+    {
+        // Handle mouse scroll wheel for zoom
+        var mouse = Mouse.current;
+        if (mouse != null)
+        {
+            float scrollDelta = mouse.scroll.ReadValue().y;
+            
+            if (scrollDelta > 0f)
+            {
+                if (closeFar < 1f)
+                {
+                    closeFar += 0.1f;
+                }
+                if (closeFar > 1f)
+                {
+                    closeFar = 1f;
+                }
+            }
+            else if (scrollDelta < 0f)
+            {
+                if (closeFar > 0f)
+                {
+                    closeFar -= 0.1f;
+                }
+                if (closeFar < 0f)
+                {
+                    closeFar = 0f;
+                }
+            }
+        }
+        
+        closeFarLerp = Mathf.Lerp(closeFarLerp, closeFar, Time.deltaTime * scrollSpeed);
+        camera.transform.position = Vector3.Lerp(farPivot.position, basePivot.position, closeFarLerp);
+
+        // Handle mouse button for rotation
+        if (mouse != null && mouse.leftButton.isPressed)
+        {
+            rotationPossible = true;
+        }
+        else
+        {
+            rotationPossible = false;
+        }
+
+        if (rotationPossible == true)
+        {
+            rotation = gameObject.transform.localRotation;
+            
+            // Get mouse delta for rotation
+            Vector2 mouseDelta = mouse.delta.ReadValue();
+            x = rotation.eulerAngles.x + mouseDelta.y * rotationAmount * 0.1f;
+            
+            if (x > maximumAngle && x < 180)
+            {
+                x = maximumAngle;
+            }
+            if (x < 340f && x > 180f)
+            {
+                x = 340f;
+            }
+            
+            y = rotation.eulerAngles.y + mouseDelta.x * rotationAmount * 0.1f;
+            mouseAxisToVector.Set(x, y, 0f);
+            rotation.eulerAngles = mouseAxisToVector;
+            gameObject.transform.localRotation = rotation;
+        }
+    }
+}
