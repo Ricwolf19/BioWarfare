@@ -113,11 +113,43 @@ namespace BioWarfare.InfectedZones
         
         void OnTriggerEnter(Collider other)
         {
-            // Activate zone when player enters
-            if (other.CompareTag("Player") && !isActive && !isCleared)
+            // Only activate if player's main collider enters (not bullets/projectiles)
+            if (IsPlayer(other) && !isActive && !isCleared)
             {
+                Debug.Log($"<color=green>[InfectedZone]</color> Player detected! Activating zone...");
                 ActivateZone();
             }
+        }
+        
+        void OnTriggerStay(Collider other)
+        {
+            // Backup activation method - sometimes OnTriggerEnter is missed
+            if (IsPlayer(other) && !isActive && !isCleared)
+            {
+                Debug.Log($"<color=yellow>[InfectedZone]</color> Player detected in TriggerStay! Activating zone...");
+                ActivateZone();
+            }
+        }
+        
+        /// <summary>
+        /// Checks if the collider belongs to the actual player (not bullets/projectiles)
+        /// </summary>
+        private bool IsPlayer(Collider collider)
+        {
+            // Method 1: Check for Player tag AND PlayerMovement component
+            if (collider.CompareTag("Player") && collider.GetComponent<cowsins.PlayerMovement>() != null)
+            {
+                return true;
+            }
+            
+            // Method 2: Check parent for Player tag (in case child collider triggered)
+            Transform parent = collider.transform.parent;
+            if (parent != null && parent.CompareTag("Player"))
+            {
+                return true;
+            }
+            
+            return false;
         }
         
         /// <summary>

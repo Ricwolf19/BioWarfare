@@ -51,6 +51,10 @@ namespace BioWarfare.InfectedZones
         public GameObject vulnerableVFXPrefab;    // FusionCore
         public GameObject destroyVFXPrefab;       // Explosion
         
+        [Header("Visual Settings")]
+        [Tooltip("Hide the cylinder mesh and only show VFX")]
+        public bool hidePillarMesh = true;
+        
         [Header("Checkpoint Indicator")]
         public GameObject checkpointPrefab;       // CheckpointView prefab
         
@@ -94,6 +98,13 @@ namespace BioWarfare.InfectedZones
             if (pillarRenderer != null)
             {
                 originalColor = pillarRenderer.material.color;
+                
+                // Hide mesh if option is enabled (only show VFX)
+                if (hidePillarMesh)
+                {
+                    pillarRenderer.enabled = false;
+                    Debug.Log("[InfectedPillar] Pillar mesh hidden. VFX-only mode.");
+                }
             }
             
             // Find player
@@ -171,6 +182,11 @@ namespace BioWarfare.InfectedZones
             if (activeVFXPrefab != null)
             {
                 activeVFXInstance = Instantiate(activeVFXPrefab, transform.position, Quaternion.identity, transform);
+                
+                // Disable looping on VFX - let it play once then stay
+                DisableVFXLoop(activeVFXInstance);
+                
+                Debug.Log("[InfectedPillar] Active VFX spawned");
             }
             
             // Spawn checkpoint indicator
@@ -253,8 +269,16 @@ namespace BioWarfare.InfectedZones
             // Spawn vulnerable VFX
             if (vulnerableVFXPrefab != null)
             {
-                Destroy(activeVFXInstance); // Remove active VFX
+                if (activeVFXInstance != null)
+                {
+                    Destroy(activeVFXInstance); // Remove active VFX
+                }
                 activeVFXInstance = Instantiate(vulnerableVFXPrefab, transform.position, Quaternion.identity, transform);
+                
+                // Disable looping on vulnerable VFX
+                DisableVFXLoop(activeVFXInstance);
+                
+                Debug.Log("[InfectedPillar] Vulnerable VFX spawned");
             }
             
             // Audio feedback
@@ -381,6 +405,81 @@ namespace BioWarfare.InfectedZones
             
             // Destroy GameObject after delay
             Destroy(gameObject, 2f);
+        }
+        
+        /// <summary>
+        /// Makes VFX play appear animation then stay visible in loop state
+        /// </summary>
+        private void DisableVFXLoop(GameObject vfxInstance)
+        {
+            if (vfxInstance == null) return;
+            
+            // Get all Animators in VFX
+            Animator[] animators = vfxInstance.GetComponentsInChildren<Animator>();
+            foreach (var anim in animators)
+            {
+                if (anim == null) continue;
+                
+                // Check if animator has parameters
+                if (anim.parameters.Length > 0)
+                {
+                    // Try to set trigger/bool for staying active
+                    foreach (var param in anim.parameters)
+                    {
+                        if (param.name.ToLower().Contains("loop") && param.type == AnimatorControllerParameterType.Bool)
+                        {
+                            anim.SetBool(param.name, true);
+                            Debug.Log($"[InfectedPillar] Set animator parameter '{param.name}' to true");
+                        }
+                        else if (param.name.ToLower().Contains("hide") && param.type == AnimatorControllerParameterType.Bool)
+                        {
+                            anim.SetBool(param.name, false);
+                            Debug.Log($"[InfectedPillar] Set animator parameter '{param.name}' to false");
+                        }
+                    }
+                }
+                
+                // Alternative: Force animator to stay in specific state
+                // Play "Appear" animation, then it should transition to "Loop"
+                if (HasState(anim, "Loop"))
+                {
+                    // Give appear animation time to play (0.5 seconds), then force loop
+                    StartCoroutine(ForceLoopState(anim));
+                }
+            }
+        }
+        
+        /// <summary>
+        /// Checks if animator has a specific state
+        /// </summary>
+        private bool HasState(Animator anim, string stateName)
+        {
+            if (anim == null || anim.runtimeAnimatorController == null) return false;
+            
+            foreach (var clip in anim.runtimeAnimatorController.animationClips)
+            {
+                if (clip.name.ToLower().Contains(stateName.ToLower()))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+        
+        /// <summary>
+        /// Forces animator to stay in Loop state after appear animation
+        /// </summary>
+        private IEnumerator ForceLoopState(Animator anim)
+        {
+            // Wait for appear animation to finish (most appear animations are ~1 second)
+            yield return new WaitForSeconds(1.5f);
+            
+            // Force play Loop state
+            if (anim != null)
+            {
+                anim.Play("Loop", 0);
+                Debug.Log("[InfectedPillar] Forced animator to Loop state");
+            }
         }
         
         // Public API
