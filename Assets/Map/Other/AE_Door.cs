@@ -45,8 +45,8 @@ namespace Art_Equilibrium
 
             audioSource = gameObject.AddComponent<AudioSource>();
             
-            // Find the FPS Engine InputManager
-            inputManager = FindObjectOfType<InputManager>();
+            // Find the FPS Engine InputManager using Unity 2023+ API
+            inputManager = FindFirstObjectByType<InputManager>();
             if (inputManager == null)
             {
                 Debug.LogWarning("[AE_Door] InputManager not found. Door interactions may not work.");
