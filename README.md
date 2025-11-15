@@ -31,10 +31,12 @@ Set in a post-pandemic world within **The Horror Hospital**, players must surviv
 ### 🎮 Gameplay
 - **Modern FPS Controls:** Smooth movement, sprinting, crouching, and weapon handling powered by Cowsins FPS Engine
 - **Intelligent AI Enemies:** Emerald AI system with detection, pathfinding, and combat behaviors
+- **Infected Zones System:** Objective-based gameplay with enemy spawning, destructible pillars, and zone capture
 - **Interactive Environment:** Doors, drawers, and objects from The Horror Hospital asset
 - **NavMesh Navigation:** AI enemies navigate the hospital using Unity's AI Navigation system
 - **Faction System:** Player vs Enemy faction-based combat with configurable relations
 - **Location-Based Damage:** Headshot and body part damage multipliers
+- **Dynamic VFX:** Ground effects, pillar markers, and zone visual feedback
 
 ### �️ Technical Integration
 - **Input System:** Unity's new Input System integrated with FPS Engine
@@ -105,11 +107,15 @@ Set in a post-pandemic world within **The Horror Hospital**, players must surviv
 - [x] UI button system with quit functionality
 
 ### 🚧 In Progress
+- [x] Infected Zones system (objective-based gameplay)
+- [x] Enemy spawning and wave management
+- [x] Destroyable pillars and capture points
 - [ ] Additional enemy types and behaviors
 - [ ] Weapon variety and balancing
 - [ ] Sound effects and music integration
 - [ ] Level design and pacing
 - [ ] Performance optimization
+- [ ] VFX integration for zones and objectives
 
 ### 📅 Upcoming
 - [ ] Save/load system
@@ -124,27 +130,62 @@ Set in a post-pandemic world within **The Horror Hospital**, players must surviv
 ```
 BioWarfare/
 ├── Assets/
-│   ├── Cowsins/                          # FPS Engine (player controller, weapons)
-│   ├── The_Horror_Hospital/              # Environment and interactive objects
-│   │   └── Other/
-│   │       ├── AE_Door.cs               # Modified for new Input System
-│   │       └── AE_Drawer.cs             # Modified for new Input System
-│   ├── Emerald AI/                       # AI behavior system
+│   ├── Brand/                            # Project branding and logo
+│   │   └── Logo/
+│   │       └── Big_IsoType.png          # Project logo
+│   │
+│   ├── Characters/                       # Character models and AI
+│   │   ├── Enemies/                     # Enemy prefabs and variants
+│   │   │   ├── Humanoid_Creatures/      # Humanoid enemy models
+│   │   │   └── Boss/                    # Boss characters
+│   │   └── Player/                      # Player-related assets
+│   │
+│   ├── Engines/                          # Core game engines
+│   │   └── Fps Engine/                  # Cowsins FPS Engine
+│   │       ├── Scripts/                 # FPS mechanics and systems
+│   │       │   └── Extra/
+│   │       │       └── PointCapture.cs  # Zone capture system
+│   │       ├── Prefabs/                 # Weapons, UI, player prefab
+│   │       └── UI/                      # HUD and menu systems
+│   │
+│   ├── Map/                              # Level environments
+│   │   ├── The_Horror_Hospital/         # Hospital environment
+│   │   │   └── Other/
+│   │   │       ├── AE_Door.cs          # Modified for new Input System
+│   │   │       └── AE_Drawer.cs        # Modified for new Input System
+│   │   └── Props/                       # Environment props and objects
+│   │
+│   ├── Scenes/                           # Unity scenes
+│   │   └── SampleScene.unity            # Main game scene
+│   │
+│   ├── Scripts/                          # Custom game scripts
+│   │   ├── InfectedZones/               # Infected Zones system (NEW)
+│   │   │   ├── InfectedZone.cs         # Core zone logic
+│   │   │   ├── DestroyablePillar.cs    # Destructible objectives
+│   │   │   └── ZoneManager.cs          # Global zone progression
 │   │   └── Integrations/
 │   │       └── FPS Engine/
-│   │           ├── FPSEnginePlayerBridge.cs
-│   │           └── FPSEngineAIBridge.cs
-│   ├── Scenes/
-│   │   └── SampleScene.unity            # Main game scene
-│   └── Brand/
-│       └── Logo/
-│           └── Big_IsoType.png          # Project logo
+│   │           ├── FPSEnginePlayerBridge.cs  # Player-AI damage bridge
+│   │           └── FPSEngineAIBridge.cs      # AI-Player damage bridge
+│   │
+│   ├── Utils/                            # Utilities and tools
+│   │   ├── AI/                          # Emerald AI system
+│   │   │   └── Integrations/
+│   │   │       └── FPS Engine/          # AI-FPS Engine bridge
+│   │   └── VFX/                         # Visual effects
+│   │       └── TopDownEffects/          # Ground VFX, pillars, shields
+│   │           └── CompleteEffects/     # Ready-to-use effect prefabs
+│   │
+│   └── TextMesh Pro/                     # TextMeshPro assets
+│
 ├── ProjectSettings/
 │   └── ProjectSettings.asset            # Input System configuration
+│
 ├── Packages/
-│   ├── manifest.json
+│   ├── manifest.json                    # Package dependencies
 │   └── packages-lock.json
-└── README.md
+│
+└── README.md                             # This file
 ```
 
 ---
