@@ -15,10 +15,12 @@ namespace BioWarfare.InfectedZones
         [SerializeField] private InfectedZoneData zoneData;
         
         [Header("Zone Components")]
-        [SerializeField] private Transform pillarSpawnPoint;
         [SerializeField] private Transform[] enemySpawnPoints;
         [SerializeField] private Transform checkpointMarker;
         [SerializeField] private float checkpointHeightOffset = 5f; // Height above zone center
+        
+        [Header("Pillar Reference")]
+        [SerializeField] private GameObject pillarObject; // Reference to pillar already in scene
         
         [Header("Zone State")]
         [SerializeField] private ZoneState currentState = ZoneState.Locked;
@@ -27,7 +29,7 @@ namespace BioWarfare.InfectedZones
         // Component references
         private ZoneCaptureSystem captureSystem;
         private EnemySpawnController spawnController;
-        private PillarDamageReceiver spawnedPillar;
+        private PillarDamageReceiver pillarDamageReceiver;
         private AudioSource audioSource;
 
         #region Unity Lifecycle
@@ -71,6 +73,18 @@ namespace BioWarfare.InfectedZones
             // Subscribe to capture events
             captureSystem.OnCaptureStarted.AddListener(OnCaptureStarted);
             captureSystem.OnCaptureCompleted.AddListener(OnCaptureCompleted);
+            
+            // Setup pillar reference if assigned
+            if (pillarObject != null)
+            {
+                pillarDamageReceiver = pillarObject.GetComponent<PillarDamageReceiver>();
+                if (pillarDamageReceiver == null)
+                    pillarDamageReceiver = pillarObject.AddComponent<PillarDamageReceiver>();
+                
+                // Initialize pillar (visible from start, VFX set on pillar GameObject in inspector)
+                pillarDamageReceiver.Initialize(this, zoneData.pillarMaxHealth);
+                Debug.Log($"[Zone {zoneData?.zoneName}] Pillar initialized and visible");
+            }
         }
 
         private void RegisterWithManager()
@@ -170,48 +184,75 @@ namespace BioWarfare.InfectedZones
             if (audioSource != null)
                 audioSource.Stop();
 
-            // Spawn pillar
-            if (zoneData?.pillarPrefab != null && pillarSpawnPoint != null)
+            // Show capture complete VFX
+            if (zoneData?.zoneCaptureVFX != null)
             {
-                GameObject pillarObj = Instantiate(zoneData.pillarPrefab, pillarSpawnPoint.position, pillarSpawnPoint.rotation);
-                spawnedPillar = pillarObj.GetComponent<PillarDamageReceiver>();
-                if (spawnedPillar == null)
-                    spawnedPillar = pillarObj.AddComponent<PillarDamageReceiver>();
+                Instantiate(zoneData.zoneCaptureVFX, transform.position, Quaternion.identity);
+                Debug.Log($"[Zone {zoneData?.zoneName}] Capture VFX spawned at {transform.position}");
+            }
+            else
+            {
+                Debug.LogWarning($"[Zone {zoneData?.zoneName}] Zone Capture VFX is NULL!");
+            }
 
-                spawnedPillar.Initialize(this, zoneData.pillarMaxHealth, zoneData.pillarDestructionVFX);
+            // Pillar is now vulnerable to damage after capture
+            if (pillarObject != null)
+            {
+                Debug.Log($"[Zone {zoneData?.zoneName}] Pillar is now vulnerable to damage!");
+                
+                // Show pillar vulnerable VFX at pillar position
+                if (zoneData?.pillarVulnerableVFX != null)
+                {
+                    Instantiate(zoneData.pillarVulnerableVFX, pillarObject.transform.position, Quaternion.identity);
+                    Debug.Log($"[Zone {zoneData?.zoneName}] Pillar Vulnerable VFX spawned at pillar position");
+                }
+            }
+            else
+            {
+                Debug.LogWarning($"[Zone {zoneData?.zoneName}] Pillar object is NULL!");
             }
 
             // Resume spawning
             spawnController.ResumeSpawning();
-
-            // VFX
-            if (zoneData?.zoneCaptureVFX != null)
-                Instantiate(zoneData.zoneCaptureVFX, transform.position, Quaternion.identity);
 
             zoneEvents.OnCaptureCompleted?.Invoke();
         }
 
         private void CleanseZone()
         {
+            Debug.Log($"[Zone {zoneData?.zoneName}] ✨ CLEANSING ZONE...");
+            
             // Stop spawning
             spawnController.StopSpawning();
 
-            // Hide checkpoint
-            ShowCheckpointMarker(false);
+            // DESTROY checkpoint marker (not just hide it)
+            DestroyCheckpointMarker();
 
-            // VFX and audio
+            // Show zone cleansed VFX
             if (zoneData?.zoneCleansedVFX != null)
+            {
                 Instantiate(zoneData.zoneCleansedVFX, transform.position, Quaternion.identity);
+                Debug.Log($"[Zone {zoneData?.zoneName}] Cleansed VFX spawned at {transform.position}");
+            }
+            else
+            {
+                Debug.LogWarning($"[Zone {zoneData?.zoneName}] Zone Cleansed VFX is NULL!");
+            }
 
+            // Audio
             if (zoneData?.zoneCleansedSound != null && audioSource != null)
             {
                 audioSource.loop = false;
                 audioSource.PlayOneShot(zoneData.zoneCleansedSound);
+                Debug.Log($"[Zone {zoneData?.zoneName}] Cleansed sound played");
             }
 
-            // Notify manager - THIS TRIGGERS NEXT ZONE ACTIVATION
+            // Notify manager to update progress tracking
             if (GameProgressManager.Instance != null)
+            {
                 GameProgressManager.Instance.OnZoneCleansed(this);
+                Debug.Log($"[Zone {zoneData?.zoneName}] Notified GameProgressManager - Zone Complete!");
+            }
 
             zoneEvents.OnZoneCleansed?.Invoke();
 
@@ -225,23 +266,35 @@ namespace BioWarfare.InfectedZones
 
         public void ShowCheckpointMarker(bool show)
         {
-           if (checkpointMarker == null)
-                {
+            if (checkpointMarker == null)
+            {
                 Debug.LogWarning($"[Zone {zoneData?.zoneName}] Checkpoint marker is NULL! Assign it in the Inspector.");
                 return;
-                }
-                checkpointMarker.gameObject.SetActive(show);
-                // Position marker above the zone center
-                if (show)
-                {
+            }
+            
+            checkpointMarker.gameObject.SetActive(show);
+            
+            // Position marker above the zone center
+            if (show)
+            {
                 Vector3 markerPos = transform.position + Vector3.up * checkpointHeightOffset;
                 checkpointMarker.position = markerPos;
                 Debug.Log($"[Zone {zoneData?.zoneName}] Checkpoint marker SHOWN at {markerPos} (height offset: {checkpointHeightOffset})");
-                }
-                else
-                {
+            }
+            else
+            {
                 Debug.Log($"[Zone {zoneData?.zoneName}] Checkpoint marker HIDDEN");
-                }
+            }
+        }
+
+        private void DestroyCheckpointMarker()
+        {
+            if (checkpointMarker != null)
+            {
+                Debug.Log($"[Zone {zoneData?.zoneName}] Checkpoint marker DESTROYED");
+                Destroy(checkpointMarker.gameObject);
+                checkpointMarker = null;
+            }
         }
 
         #endregion
@@ -302,8 +355,10 @@ namespace BioWarfare.InfectedZones
 
         private void OnCaptureCompleted()
         {
-            Debug.Log($"[Zone] Capture completed - spawning pillar");
+            Debug.Log($"[Zone] Capture completed - pillar is now vulnerable");
             SetState(ZoneState.PillarVulnerable);
+            
+            // NOTE: Zone is NOT cleansed yet - must destroy pillar and defeat bosses first!
         }
 
         #endregion
@@ -318,18 +373,20 @@ namespace BioWarfare.InfectedZones
 
         public void OnPillarDestroyed()
         {
-            Debug.Log($"[Zone {zoneData?.zoneName}] Pillar destroyed! Spawning bosses...");
+            Debug.Log($"[Zone {zoneData?.zoneName}] 💥 PILLAR DESTROYED! Zone complete!");
             
             zoneEvents.OnPillarDestroyed?.Invoke();
             
             // Stop normal enemy spawning
             spawnController.StopSpawning();
             
-            // Spawn bosses
+            // Spawn bosses (optional challenge content)
             spawnController.SpawnBosses();
             
-            // Start checking for boss defeat
-            StartCoroutine(CheckBossDefeatCoroutine());
+            Debug.Log($"[Zone {zoneData?.zoneName}] Bosses spawned as optional challenge");
+            
+            // ✅ ZONE IS NOW COMPLETE - Mark it immediately!
+            SetState(ZoneState.Cleansed);
         }
 
         public ZoneState GetState() => currentState;
@@ -339,29 +396,6 @@ namespace BioWarfare.InfectedZones
 
         #endregion
 
-        #region Enemy Defeat Checking
-
-        /// <summary>
-        /// Monitors ALL enemy deaths and cleanses zone when last enemy dies
-        /// </summary>
-        private IEnumerator CheckBossDefeatCoroutine()
-        {
-            Debug.Log($"[Zone] Monitoring enemy defeat... Waiting for ALL enemies to be eliminated.");
-            
-            // Wait a bit for bosses to spawn
-            yield return new WaitForSeconds(zoneData.bossSpawnDelay + 1f);
-            
-            // Check every second if ALL enemies (normal + bosses) are defeated
-            while (!spawnController.AreAllEnemiesDefeated())
-            {
-                yield return new WaitForSeconds(1f);
-            }
-            
-            Debug.Log($"[Zone {zoneData?.zoneName}] ✅ ALL ENEMIES ELIMINATED! Cleansing zone...");
-            SetState(ZoneState.Cleansed);
-        }
-
-        #endregion
 
         #region Gizmos
 
