@@ -39,8 +39,8 @@ namespace Art_Equilibrium
             
             audioSource = gameObject.AddComponent<AudioSource>();
             
-            // ADD THESE LINES:
-            inputManager = FindObjectOfType<InputManager>();
+            // Find InputManager using Unity 2023+ API
+            inputManager = FindFirstObjectByType<InputManager>();
             if (inputManager == null)
             {
                 Debug.LogWarning("[AE_Drawer] InputManager not found. Drawer interactions may not work.");
