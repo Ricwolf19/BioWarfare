@@ -134,14 +134,20 @@ namespace BioWarfare.InfectedZones
         #region Progress Tracking
 
         /// <summary>
-        /// Called when a zone is cleansed (all bosses defeated)
+        /// Called when a zone is cleansed (capture completed)
         /// </summary>
         public void OnZoneCleansed(InfectedZoneController zone)
         {
             cleansedZones++;
-            Debug.Log($"[ProgressManager] Zone cleansed: {zone.GetZoneData().zoneName} ({cleansedZones}/{totalZones})");
+            Debug.Log($"[ProgressManager] ✅ Zone cleansed: {zone.GetZoneData().zoneName} ({cleansedZones}/{totalZones})");
 
             UpdateUI();
+            
+            // Check if all zones complete
+            if (cleansedZones >= totalZones)
+            {
+                OnAllZonesCompleted();
+            }
         }
 
         private void UpdateUI()

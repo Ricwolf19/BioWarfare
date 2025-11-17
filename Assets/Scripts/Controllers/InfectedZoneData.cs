@@ -31,12 +31,6 @@ namespace BioWarfare.InfectedZones
         [Header("Pillar Settings")]
         [Tooltip("Health of the zone's pillar")]
         public float pillarMaxHealth = 500f;
-        
-        [Tooltip("Pillar prefab to spawn")]
-        public GameObject pillarPrefab;
-        
-        [Tooltip("Effect when pillar is destroyed")]
-        public GameObject pillarDestructionVFX;
 
         [Header("Normal Enemy Spawn Settings")]
         [Tooltip("Max simultaneous normal enemies in this zone")]
@@ -70,6 +64,7 @@ namespace BioWarfare.InfectedZones
         [Header("Visual Effects")]
         public GameObject zoneEnterVFX;
         public GameObject zoneCaptureVFX;
+        public GameObject pillarVulnerableVFX; // VFX when pillar becomes vulnerable
         public GameObject zoneCleansedVFX;
         
         [Header("Audio")]
