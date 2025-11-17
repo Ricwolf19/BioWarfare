@@ -1,0 +1,1857 @@
+fileFormatVersion: 2
+guid: b8ce8d2f3b76c00419f629818d164500
+timeCreated: 1527787824
+licenseType: Store
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: ArmatureDoor
+    100002: ArmatureMainRotor
+    100004: ArmatureTailRotor
+    100006: BendController
+    100008: BendController_end
+    100010: Canon_LOD0
+    100012: Canon_LOD1
+    100014: Canon_LOD2
+    100016: Cockpit_LOD0
+    100018: Cockpit_LOD1
+    100020: Cockpit_LOD2
+    100022: CollectiveController
+    100024: CollectiveController_end
+    100026: EmptyCanon
+    100028: EmptyMainBladeRotor
+    100030: EmptyRadar
+    100032: EmptyTurret
+    100034: FakeMainRotorBlade
+    100036: FakeTailRotor
+    100038: Fuselage_LOD0
+    100040: Fuselage_LOD1
+    100042: Fuselage_LOD2
+    100044: GunnerDoor
+    100046: GunnerDoor_end
+    100048: GunnerDoor_LOD0
+    100050: GunnerDoor_LOD1
+    100052: GunnerDoor_LOD2
+    100054: GunnerDoorController
+    100056: GunnerDoorController_end
+    100058: MainRotor_LOD0
+    100060: MainRotor_LOD1
+    100062: MainRotor_LOD2
+    100064: MainRotorBlade_LOD0
+    100066: MainRotorBlade_LOD1
+    100068: MainRotorBlade_LOD2
+    100070: MRotor1.L
+    100072: MRotor1.R
+    100074: MRotor2.L
+    100076: MRotor2.R
+    100078: MRotor3.L
+    100080: MRotor3.R
+    100082: MRotor4.L
+    100084: MRotor4.L_end
+    100086: MRotor4.R
+    100088: MRotor4.R_end
+    100090: MRotorC
+    100092: MRotorC_end
+    100094: MRotorCollective.L
+    100096: MRotorCollective.R
+    100098: MRotorCollectiveC
+    100100: MRotorCollectiveC_end
+    100102: MRotorMecha1.L
+    100104: MRotorMecha1.R
+    100106: MRotorMecha2.L
+    100108: MRotorMecha2.R
+    100110: MRotorMecha3.L
+    100112: MRotorMecha3.R
+    100114: MRotorMecha4.L
+    100116: MRotorMecha4.L_end
+    100118: MRotorMecha4.R
+    100120: MRotorMecha4.R_end
+    100122: MRotorStatic
+    100124: MRotorStatic_end
+    100126: Nacelles Missiles_LOD0
+    100128: Nacelles Missiles_LOD1
+    100130: Nacelles Missiles_LOD2
+    100132: Nacelles Rockets_LOD0
+    100134: Nacelles Rockets_LOD1
+    100136: Nacelles Rockets_LOD2
+    100138: PilotDoor
+    100140: PilotDoor_end
+    100142: PilotDoor_LOD0
+    100144: PilotDoor_LOD1
+    100146: PilotDoor_LOD2
+    100148: PilotDoorController
+    100150: PilotDoorController_end
+    100152: Radar_LOD0
+    100154: Radar_LOD1
+    100156: Radar_LOD2
+    100158: //RootNode
+    100160: TailRotor_LOD0
+    100162: TailRotor_LOD1
+    100164: TailRotor_LOD2
+    100166: Tourelle_LOD0
+    100168: Tourelle_LOD1
+    100170: Tourelle_LOD2
+    100172: TRotor.L
+    100174: TRotor.L_end
+    100176: TRotor.R
+    100178: TRotor.R_end
+    100180: TRotorPedalController
+    100182: TRotorPedalController_end
+    100184: TRotorStatic
+    100186: TRotorStatic_end
+    100188: TRotorTurnController
+    100190: TRotorTurnController_end
+    100192: ColliderBlade
+    100194: ColliderCanon
+    100196: ColliderEngine
+    100198: ColliderFuselage
+    100200: ColliderLanding
+    100202: ColliderMainRotor
+    100204: ColliderRadar
+    100206: ColliderTailRotor1
+    100208: ColliderTailRotor2
+    100210: ColliderTorque
+    100212: ColliderTurret
+    100214: Fuselage_LOD2.007
+    100216: Fuselage_LOD2.008
+    100218: ColliderBlade.L
+    100220: ColliderBlade.R
+    100222: ColliderTorque.0
+    100224: ColliderTorque.1
+    100226: ColliderTorque.2
+    100228: ColliderTorque.3
+    100230: ColliderLanding.L
+    100232: ColliderLanding.R
+    100234: ColliderCabine
+    100236: ColliderWings
+    100238: EmptyTailRotor
+    100240: Collider WeaponsSupport
+    100242: ColliderCanopy
+    400000: ArmatureDoor
+    400002: ArmatureMainRotor
+    400004: ArmatureTailRotor
+    400006: BendController
+    400008: BendController_end
+    400010: Canon_LOD0
+    400012: Canon_LOD1
+    400014: Canon_LOD2
+    400016: Cockpit_LOD0
+    400018: Cockpit_LOD1
+    400020: Cockpit_LOD2
+    400022: CollectiveController
+    400024: CollectiveController_end
+    400026: EmptyCanon
+    400028: EmptyMainBladeRotor
+    400030: EmptyRadar
+    400032: EmptyTurret
+    400034: FakeMainRotorBlade
+    400036: FakeTailRotor
+    400038: Fuselage_LOD0
+    400040: Fuselage_LOD1
+    400042: Fuselage_LOD2
+    400044: GunnerDoor
+    400046: GunnerDoor_end
+    400048: GunnerDoor_LOD0
+    400050: GunnerDoor_LOD1
+    400052: GunnerDoor_LOD2
+    400054: GunnerDoorController
+    400056: GunnerDoorController_end
+    400058: MainRotor_LOD0
+    400060: MainRotor_LOD1
+    400062: MainRotor_LOD2
+    400064: MainRotorBlade_LOD0
+    400066: MainRotorBlade_LOD1
+    400068: MainRotorBlade_LOD2
+    400070: MRotor1.L
+    400072: MRotor1.R
+    400074: MRotor2.L
+    400076: MRotor2.R
+    400078: MRotor3.L
+    400080: MRotor3.R
+    400082: MRotor4.L
+    400084: MRotor4.L_end
+    400086: MRotor4.R
+    400088: MRotor4.R_end
+    400090: MRotorC
+    400092: MRotorC_end
+    400094: MRotorCollective.L
+    400096: MRotorCollective.R
+    400098: MRotorCollectiveC
+    400100: MRotorCollectiveC_end
+    400102: MRotorMecha1.L
+    400104: MRotorMecha1.R
+    400106: MRotorMecha2.L
+    400108: MRotorMecha2.R
+    400110: MRotorMecha3.L
+    400112: MRotorMecha3.R
+    400114: MRotorMecha4.L
+    400116: MRotorMecha4.L_end
+    400118: MRotorMecha4.R
+    400120: MRotorMecha4.R_end
+    400122: MRotorStatic
+    400124: MRotorStatic_end
+    400126: Nacelles Missiles_LOD0
+    400128: Nacelles Missiles_LOD1
+    400130: Nacelles Missiles_LOD2
+    400132: Nacelles Rockets_LOD0
+    400134: Nacelles Rockets_LOD1
+    400136: Nacelles Rockets_LOD2
+    400138: PilotDoor
+    400140: PilotDoor_end
+    400142: PilotDoor_LOD0
+    400144: PilotDoor_LOD1
+    400146: PilotDoor_LOD2
+    400148: PilotDoorController
+    400150: PilotDoorController_end
+    400152: Radar_LOD0
+    400154: Radar_LOD1
+    400156: Radar_LOD2
+    400158: //RootNode
+    400160: TailRotor_LOD0
+    400162: TailRotor_LOD1
+    400164: TailRotor_LOD2
+    400166: Tourelle_LOD0
+    400168: Tourelle_LOD1
+    400170: Tourelle_LOD2
+    400172: TRotor.L
+    400174: TRotor.L_end
+    400176: TRotor.R
+    400178: TRotor.R_end
+    400180: TRotorPedalController
+    400182: TRotorPedalController_end
+    400184: TRotorStatic
+    400186: TRotorStatic_end
+    400188: TRotorTurnController
+    400190: TRotorTurnController_end
+    400192: ColliderBlade
+    400194: ColliderCanon
+    400196: ColliderEngine
+    400198: ColliderFuselage
+    400200: ColliderLanding
+    400202: ColliderMainRotor
+    400204: ColliderRadar
+    400206: ColliderTailRotor1
+    400208: ColliderTailRotor2
+    400210: ColliderTorque
+    400212: ColliderTurret
+    400214: Fuselage_LOD2.007
+    400216: Fuselage_LOD2.008
+    400218: ColliderBlade.L
+    400220: ColliderBlade.R
+    400222: ColliderTorque.0
+    400224: ColliderTorque.1
+    400226: ColliderTorque.2
+    400228: ColliderTorque.3
+    400230: ColliderLanding.L
+    400232: ColliderLanding.R
+    400234: ColliderCabine
+    400236: ColliderWings
+    400238: EmptyTailRotor
+    400240: Collider WeaponsSupport
+    400242: ColliderCanopy
+    2100000: FuselageCobra
+    2100002: mechanique cobra
+    2100004: cockpitCage
+    2100006: Nacelle
+    2100008: verriere
+    2100010: cockpitSide
+    2100012: cockpit
+    2100014: cockpiButton
+    2100016: TailRotorFakeMotion
+    2100018: MainFakeMotionRotor
+    2100020: No Name
+    2300000: Canon_LOD0
+    2300002: Canon_LOD1
+    2300004: Canon_LOD2
+    2300006: Cockpit_LOD0
+    2300008: Cockpit_LOD1
+    2300010: Cockpit_LOD2
+    2300012: Fuselage_LOD0
+    2300014: Fuselage_LOD1
+    2300016: Fuselage_LOD2
+    2300018: Nacelles Missiles_LOD0
+    2300020: Nacelles Missiles_LOD1
+    2300022: Nacelles Missiles_LOD2
+    2300024: Nacelles Rockets_LOD0
+    2300026: Nacelles Rockets_LOD1
+    2300028: Nacelles Rockets_LOD2
+    2300030: Radar_LOD0
+    2300032: Radar_LOD1
+    2300034: Radar_LOD2
+    2300036: Tourelle_LOD0
+    2300038: Tourelle_LOD1
+    2300040: Tourelle_LOD2
+    2300042: ColliderBlade
+    2300044: ColliderCanon
+    2300046: ColliderEngine
+    2300048: ColliderFuselage
+    2300050: ColliderLanding
+    2300052: ColliderMainRotor
+    2300054: ColliderRadar
+    2300056: ColliderTailRotor1
+    2300058: ColliderTailRotor2
+    2300060: ColliderTorque
+    2300062: ColliderTurret
+    2300064: Fuselage_LOD2.007
+    2300066: Fuselage_LOD2.008
+    2300068: ColliderBlade.L
+    2300070: ColliderBlade.R
+    2300072: ColliderTorque.0
+    2300074: ColliderTorque.1
+    2300076: ColliderTorque.2
+    2300078: ColliderTorque.3
+    2300080: ColliderLanding.L
+    2300082: ColliderLanding.R
+    2300084: ColliderCabine
+    2300086: ColliderWings
+    2300088: Collider WeaponsSupport
+    2300090: ColliderCanopy
+    3300000: Canon_LOD0
+    3300002: Canon_LOD1
+    3300004: Canon_LOD2
+    3300006: Cockpit_LOD0
+    3300008: Cockpit_LOD1
+    3300010: Cockpit_LOD2
+    3300012: Fuselage_LOD0
+    3300014: Fuselage_LOD1
+    3300016: Fuselage_LOD2
+    3300018: Nacelles Missiles_LOD0
+    3300020: Nacelles Missiles_LOD1
+    3300022: Nacelles Missiles_LOD2
+    3300024: Nacelles Rockets_LOD0
+    3300026: Nacelles Rockets_LOD1
+    3300028: Nacelles Rockets_LOD2
+    3300030: Radar_LOD0
+    3300032: Radar_LOD1
+    3300034: Radar_LOD2
+    3300036: Tourelle_LOD0
+    3300038: Tourelle_LOD1
+    3300040: Tourelle_LOD2
+    3300042: ColliderBlade
+    3300044: ColliderCanon
+    3300046: ColliderEngine
+    3300048: ColliderFuselage
+    3300050: ColliderLanding
+    3300052: ColliderMainRotor
+    3300054: ColliderRadar
+    3300056: ColliderTailRotor1
+    3300058: ColliderTailRotor2
+    3300060: ColliderTorque
+    3300062: ColliderTurret
+    3300064: Fuselage_LOD2.007
+    3300066: Fuselage_LOD2.008
+    3300068: ColliderBlade.L
+    3300070: ColliderBlade.R
+    3300072: ColliderTorque.0
+    3300074: ColliderTorque.1
+    3300076: ColliderTorque.2
+    3300078: ColliderTorque.3
+    3300080: ColliderLanding.L
+    3300082: ColliderLanding.R
+    3300084: ColliderCabine
+    3300086: ColliderWings
+    3300088: Collider WeaponsSupport
+    3300090: ColliderCanopy
+    4300000: Radar_LOD0
+    4300002: Radar_LOD1
+    4300004: Radar_LOD2
+    4300006: Canon_LOD2
+    4300008: Canon_LOD1
+    4300010: Canon_LOD0
+    4300012: Tourelle_LOD0
+    4300014: Tourelle_LOD1
+    4300016: Tourelle_LOD2
+    4300018: Fuselage_LOD2
+    4300020: Nacelles Missiles_LOD2
+    4300022: Nacelles Rockets_LOD2
+    4300024: Cockpit_LOD2
+    4300026: Nacelles Rockets_LOD1
+    4300028: Nacelles Missiles_LOD1
+    4300030: Fuselage_LOD1
+    4300032: Cockpit_LOD1
+    4300034: Nacelles Missiles_LOD0
+    4300036: Nacelles Rockets_LOD0
+    4300038: Cockpit_LOD0
+    4300040: Fuselage_LOD0
+    4300042: GunnerDoor_LOD2
+    4300044: GunnerDoor_LOD1
+    4300046: GunnerDoor_LOD0
+    4300048: PilotDoor_LOD2
+    4300050: PilotDoor_LOD1
+    4300052: PilotDoor_LOD0
+    4300054: TailRotor_LOD2
+    4300056: TailRotor_LOD1
+    4300058: FakeTailRotor
+    4300060: TailRotor_LOD0
+    4300062: MainRotorBlade_LOD2
+    4300064: MainRotorBlade_LOD1
+    4300066: MainRotorBlade_LOD0
+    4300068: MainRotor_LOD2
+    4300070: MainRotor_LOD1
+    4300072: MainRotor_LOD0
+    4300074: FakeMainRotorBlade
+    4300076: ColliderMainRotor
+    4300078: ColliderLanding
+    4300080: ColliderEngine
+    4300082: Fuselage_LOD2.008
+    4300084: Fuselage_LOD2.007
+    4300086: ColliderRadar
+    4300088: ColliderFuselage
+    4300090: ColliderTailRotor1
+    4300092: ColliderTorque
+    4300094: ColliderTurret
+    4300096: ColliderCanon
+    4300098: ColliderTailRotor2
+    4300100: ColliderBlade
+    4300102: ColliderBlade.L
+    4300104: ColliderBlade.R
+    4300106: ColliderTorque.3
+    4300108: ColliderTorque.2
+    4300110: ColliderTorque.1
+    4300112: ColliderTorque.0
+    4300114: ColliderLanding.L
+    4300116: ColliderLanding.R
+    4300118: ColliderCabine
+    4300120: ColliderWings
+    4300122: Collider WeaponsSupport
+    4300124: ColliderCanopy
+    7400000: MainRotorBendAction
+    7400002: TailRotorAction
+    7400004: MainRotorBendAction
+    7400006: TailRotorAction
+    7400008: PilotDoorAction
+    7400010: MainRotorCollectiveAction
+    7400012: GunnerDoorAction
+    7400014: TailRotorAction
+    9500000: //RootNode
+    13700000: FakeMainRotorBlade
+    13700002: FakeTailRotor
+    13700004: GunnerDoor_LOD0
+    13700006: GunnerDoor_LOD1
+    13700008: GunnerDoor_LOD2
+    13700010: MainRotor_LOD0
+    13700012: MainRotor_LOD1
+    13700014: MainRotor_LOD2
+    13700016: MainRotorBlade_LOD0
+    13700018: MainRotorBlade_LOD1
+    13700020: MainRotorBlade_LOD2
+    13700022: PilotDoor_LOD0
+    13700024: PilotDoor_LOD1
+    13700026: PilotDoor_LOD2
+    13700028: TailRotor_LOD0
+    13700030: TailRotor_LOD1
+    13700032: TailRotor_LOD2
+    20500000: //RootNode
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: FuselageCobra
+    second: {fileID: 2100000, guid: 383b5f9f99449d64d98a19dc5dbae89f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MainFakeMotionRotor
+    second: {fileID: 2100000, guid: 09170e829439437409af95598b78041f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Nacelle
+    second: {fileID: 2100000, guid: 949ddaf5b1c24474090c6d83223cf233, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: TailRotorFakeMotion
+    second: {fileID: 2100000, guid: 6f0cfd2e5a4833b4793d4cb7fb007dfa, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: cockpiButton
+    second: {fileID: 2100000, guid: ac9c7acb757c3204db95c24ed64ff5b4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: cockpit
+    second: {fileID: 2100000, guid: 036e16bdb365d0244b14975dd3225619, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: cockpitCage
+    second: {fileID: 2100000, guid: 3ad638105ee97ba44b28d297899987d4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: cockpitSide
+    second: {fileID: 2100000, guid: 5ac6870174e6cee4ebfa5a1317ca6da0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mechanique cobra
+    second: {fileID: 2100000, guid: c69d3bbcf4a029544aab2ed1cdd92450, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: verriere
+    second: {fileID: 2100000, guid: b6e548476d138dd408007e1459417a02, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: TailRotorAction
+      takeName: ArmatureTailRotor|ArmatureTailRotorAction
+      firstFrame: 0
+      lastFrame: 30
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: ArmatureDoor
+        weight: 0
+      - path: ArmatureDoor/GunnerDoor
+        weight: 0
+      - path: ArmatureDoor/GunnerDoor/GunnerDoor_end
+        weight: 0
+      - path: ArmatureDoor/GunnerDoorController
+        weight: 0
+      - path: ArmatureDoor/GunnerDoorController/GunnerDoorController_end
+        weight: 0
+      - path: ArmatureDoor/PilotDoor
+        weight: 0
+      - path: ArmatureDoor/PilotDoor/PilotDoor_end
+        weight: 0
+      - path: ArmatureDoor/PilotDoorController
+        weight: 0
+      - path: ArmatureDoor/PilotDoorController/PilotDoorController_end
+        weight: 0
+      - path: ArmatureMainRotor
+        weight: 0
+      - path: ArmatureMainRotor/BendController
+        weight: 0
+      - path: ArmatureMainRotor/BendController/BendController_end
+        weight: 0
+      - path: ArmatureMainRotor/CollectiveController
+        weight: 0
+      - path: ArmatureMainRotor/CollectiveController/CollectiveController_end
+        weight: 0
+      - path: ArmatureMainRotor/ColliderBlade.L
+        weight: 0
+      - path: ArmatureMainRotor/ColliderBlade.R
+        weight: 0
+      - path: ArmatureMainRotor/EmptyMainBladeRotor
+        weight: 0
+      - path: ArmatureMainRotor/EmptyMainBladeRotor/MainRotorBlade_LOD0
+        weight: 0
+      - path: ArmatureMainRotor/EmptyMainBladeRotor/MainRotorBlade_LOD1
+        weight: 0
+      - path: ArmatureMainRotor/EmptyMainBladeRotor/MainRotorBlade_LOD2
+        weight: 0
+      - path: ArmatureMainRotor/MRotorC
+        weight: 0
+      - path: ArmatureMainRotor/MRotorC/MRotorC_end
+        weight: 0
+      - path: ArmatureMainRotor/MRotorCollective.L
+        weight: 0
+      - path: ArmatureMainRotor/MRotorCollective.L/MRotor1.L
+        weight: 0
+      - path: ArmatureMainRotor/MRotorCollective.L/MRotor1.L/MRotor2.L
+        weight: 0
+      - path: ArmatureMainRotor/MRotorCollective.L/MRotor1.L/MRotor2.L/MRotor3.L
+        weight: 0
+      - path: ArmatureMainRotor/MRotorCollective.L/MRotor1.L/MRotor2.L/MRotor3.L/MRotor4.L
+        weight: 0
+      - path: ArmatureMainRotor/MRotorCollective.L/MRotor1.L/MRotor2.L/MRotor3.L/MRotor4.L/MRotor4.L_end
+        weight: 0
+      - path: ArmatureMainRotor/MRotorCollective.R
+        weight: 0
+      - path: ArmatureMainRotor/MRotorCollective.R/MRotor1.R
+        weight: 0
+      - path: ArmatureMainRotor/MRotorCollective.R/MRotor1.R/MRotor2.R
+        weight: 0
+      - path: ArmatureMainRotor/MRotorCollective.R/MRotor1.R/MRotor2.R/MRotor3.R
+        weight: 0
+      - path: ArmatureMainRotor/MRotorCollective.R/MRotor1.R/MRotor2.R/MRotor3.R/MRotor4.R
+        weight: 0
+      - path: ArmatureMainRotor/MRotorCollective.R/MRotor1.R/MRotor2.R/MRotor3.R/MRotor4.R/MRotor4.R_end
+        weight: 0
+      - path: ArmatureMainRotor/MRotorCollectiveC
+        weight: 0
+      - path: ArmatureMainRotor/MRotorCollectiveC/MRotorCollectiveC_end
+        weight: 0
+      - path: ArmatureMainRotor/MRotorMecha1.L
+        weight: 0
+      - path: ArmatureMainRotor/MRotorMecha1.L/MRotorMecha2.L
+        weight: 0
+      - path: ArmatureMainRotor/MRotorMecha1.L/MRotorMecha2.L/MRotorMecha3.L
+        weight: 0
+      - path: ArmatureMainRotor/MRotorMecha1.L/MRotorMecha2.L/MRotorMecha3.L/MRotorMecha4.L
+        weight: 0
+      - path: ArmatureMainRotor/MRotorMecha1.L/MRotorMecha2.L/MRotorMecha3.L/MRotorMecha4.L/MRotorMecha4.L_end
+        weight: 0
+      - path: ArmatureMainRotor/MRotorMecha1.R
+        weight: 0
+      - path: ArmatureMainRotor/MRotorMecha1.R/MRotorMecha2.R
+        weight: 0
+      - path: ArmatureMainRotor/MRotorMecha1.R/MRotorMecha2.R/MRotorMecha3.R
+        weight: 0
+      - path: ArmatureMainRotor/MRotorMecha1.R/MRotorMecha2.R/MRotorMecha3.R/MRotorMecha4.R
+        weight: 0
+      - path: ArmatureMainRotor/MRotorMecha1.R/MRotorMecha2.R/MRotorMecha3.R/MRotorMecha4.R/MRotorMecha4.R_end
+        weight: 0
+      - path: ArmatureMainRotor/MRotorStatic
+        weight: 0
+      - path: ArmatureMainRotor/MRotorStatic/MRotorStatic_end
+        weight: 0
+      - path: ArmatureTailRotor
+        weight: 1
+      - path: ArmatureTailRotor/ColliderTailRotor2
+        weight: 0
+      - path: ArmatureTailRotor/TRotor.L
+        weight: 1
+      - path: ArmatureTailRotor/TRotor.L/TRotor.L_end
+        weight: 0
+      - path: ArmatureTailRotor/TRotor.R
+        weight: 1
+      - path: ArmatureTailRotor/TRotor.R/TRotor.R_end
+        weight: 0
+      - path: ArmatureTailRotor/TRotorPedalController
+        weight: 0
+      - path: ArmatureTailRotor/TRotorPedalController/TRotorPedalController_end
+        weight: 0
+      - path: ArmatureTailRotor/TRotorStatic
+        weight: 0
+      - path: ArmatureTailRotor/TRotorStatic/TRotorStatic_end
+        weight: 0
+      - path: ArmatureTailRotor/TRotorTurnController
+        weight: 0
+      - path: ArmatureTailRotor/TRotorTurnController/TRotorTurnController_end
+        weight: 0
+      - path: Cockpit_LOD0
+        weight: 0
+      - path: Cockpit_LOD1
+        weight: 0
+      - path: Cockpit_LOD2
+        weight: 0
+      - path: ColliderEngine
+        weight: 0
+      - path: ColliderFuselage
+        weight: 0
+      - path: ColliderLanding.L
+        weight: 0
+      - path: ColliderLanding.R
+        weight: 0
+      - path: ColliderMainRotor
+        weight: 0
+      - path: ColliderRadar
+        weight: 0
+      - path: ColliderTailRotor1
+        weight: 0
+      - path: ColliderTorque.0
+        weight: 0
+      - path: ColliderTorque.1
+        weight: 0
+      - path: ColliderTorque.2
+        weight: 0
+      - path: ColliderTorque.3
+        weight: 0
+      - path: EmptyRadar
+        weight: 0
+      - path: EmptyRadar/Radar_LOD0
+        weight: 0
+      - path: EmptyRadar/Radar_LOD1
+        weight: 0
+      - path: EmptyRadar/Radar_LOD2
+        weight: 0
+      - path: EmptyTurret
+        weight: 0
+      - path: EmptyTurret/ColliderTurret
+        weight: 0
+      - path: EmptyTurret/EmptyCanon
+        weight: 0
+      - path: EmptyTurret/EmptyCanon/Canon_LOD0
+        weight: 0
+      - path: EmptyTurret/EmptyCanon/Canon_LOD1
+        weight: 0
+      - path: EmptyTurret/EmptyCanon/Canon_LOD2
+        weight: 0
+      - path: EmptyTurret/EmptyCanon/ColliderCanon
+        weight: 0
+      - path: EmptyTurret/Tourelle_LOD0
+        weight: 0
+      - path: EmptyTurret/Tourelle_LOD1
+        weight: 0
+      - path: EmptyTurret/Tourelle_LOD2
+        weight: 0
+      - path: FakeMainRotorBlade
+        weight: 0
+      - path: FakeTailRotor
+        weight: 0
+      - path: Fuselage_LOD0
+        weight: 0
+      - path: Fuselage_LOD1
+        weight: 0
+      - path: Fuselage_LOD2
+        weight: 0
+      - path: Fuselage_LOD2.007
+        weight: 0
+      - path: Fuselage_LOD2.008
+        weight: 0
+      - path: GunnerDoor_LOD0
+        weight: 0
+      - path: GunnerDoor_LOD1
+        weight: 0
+      - path: GunnerDoor_LOD2
+        weight: 0
+      - path: MainRotor_LOD0
+        weight: 0
+      - path: MainRotor_LOD1
+        weight: 0
+      - path: MainRotor_LOD2
+        weight: 0
+      - path: Nacelles Missiles_LOD0
+        weight: 0
+      - path: Nacelles Missiles_LOD1
+        weight: 0
+      - path: Nacelles Missiles_LOD2
+        weight: 0
+      - path: Nacelles Rockets_LOD0
+        weight: 0
+      - path: Nacelles Rockets_LOD1
+        weight: 0
+      - path: Nacelles Rockets_LOD2
+        weight: 0
+      - path: PilotDoor_LOD0
+        weight: 0
+      - path: PilotDoor_LOD1
+        weight: 0
+      - path: PilotDoor_LOD2
+        weight: 0
+      - path: TailRotor_LOD0
+        weight: 0
+      - path: TailRotor_LOD1
+        weight: 0
+      - path: TailRotor_LOD2
+        weight: 0
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: PilotDoorAction
+      takeName: ArmatureDoor|ArmatureDoorAction
+      firstFrame: 0
+      lastFrame: 30
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: ArmatureDoor
+        weight: 1
+      - path: ArmatureDoor/GunnerDoor
+        weight: 0
+      - path: ArmatureDoor/GunnerDoor/GunnerDoor_end
+        weight: 0
+      - path: ArmatureDoor/GunnerDoorController
+        weight: 0
+      - path: ArmatureDoor/GunnerDoorController/GunnerDoorController_end
+        weight: 0
+      - path: ArmatureDoor/PilotDoor
+        weight: 1
+      - path: ArmatureDoor/PilotDoor/PilotDoor_end
+        weight: 0
+      - path: ArmatureDoor/PilotDoorController
+        weight: 0
+      - path: ArmatureDoor/PilotDoorController/PilotDoorController_end
+        weight: 0
+      - path: ArmatureMainRotor
+        weight: 0
+      - path: ArmatureMainRotor/BendController
+        weight: 0
+      - path: ArmatureMainRotor/BendController/BendController_end
+        weight: 0
+      - path: ArmatureMainRotor/CollectiveController
+        weight: 0
+      - path: ArmatureMainRotor/CollectiveController/CollectiveController_end
+        weight: 0
+      - path: ArmatureMainRotor/ColliderBlade.L
+        weight: 0
+      - path: ArmatureMainRotor/ColliderBlade.R
+        weight: 0
+      - path: ArmatureMainRotor/EmptyMainBladeRotor
+        weight: 0
+      - path: ArmatureMainRotor/EmptyMainBladeRotor/MainRotorBlade_LOD0
+        weight: 0
+      - path: ArmatureMainRotor/EmptyMainBladeRotor/MainRotorBlade_LOD1
+        weight: 0
+      - path: ArmatureMainRotor/EmptyMainBladeRotor/MainRotorBlade_LOD2
+        weight: 0
+      - path: ArmatureMainRotor/MRotorC
+        weight: 0
+      - path: ArmatureMainRotor/MRotorC/MRotorC_end
+        weight: 0
+      - path: ArmatureMainRotor/MRotorCollective.L
+        weight: 0
+      - path: ArmatureMainRotor/MRotorCollective.L/MRotor1.L
+        weight: 0
+      - path: ArmatureMainRotor/MRotorCollective.L/MRotor1.L/MRotor2.L
+        weight: 0
+      - path: ArmatureMainRotor/MRotorCollective.L/MRotor1.L/MRotor2.L/MRotor3.L
+        weight: 0
+      - path: ArmatureMainRotor/MRotorCollective.L/MRotor1.L/MRotor2.L/MRotor3.L/MRotor4.L
+        weight: 0
+      - path: ArmatureMainRotor/MRotorCollective.L/MRotor1.L/MRotor2.L/MRotor3.L/MRotor4.L/MRotor4.L_end
+        weight: 0
+      - path: ArmatureMainRotor/MRotorCollective.R
+        weight: 0
+      - path: ArmatureMainRotor/MRotorCollective.R/MRotor1.R
+        weight: 0
+      - path: ArmatureMainRotor/MRotorCollective.R/MRotor1.R/MRotor2.R
+        weight: 0
+      - path: ArmatureMainRotor/MRotorCollective.R/MRotor1.R/MRotor2.R/MRotor3.R
+        weight: 0
+      - path: ArmatureMainRotor/MRotorCollective.R/MRotor1.R/MRotor2.R/MRotor3.R/MRotor4.R
+        weight: 0
+      - path: ArmatureMainRotor/MRotorCollective.R/MRotor1.R/MRotor2.R/MRotor3.R/MRotor4.R/MRotor4.R_end
+        weight: 0
+      - path: ArmatureMainRotor/MRotorCollectiveC
+        weight: 0
+      - path: ArmatureMainRotor/MRotorCollectiveC/MRotorCollectiveC_end
+        weight: 0
+      - path: ArmatureMainRotor/MRotorMecha1.L
+        weight: 0
+      - path: ArmatureMainRotor/MRotorMecha1.L/MRotorMecha2.L
+        weight: 0
+      - path: ArmatureMainRotor/MRotorMecha1.L/MRotorMecha2.L/MRotorMecha3.L
+        weight: 0
+      - path: ArmatureMainRotor/MRotorMecha1.L/MRotorMecha2.L/MRotorMecha3.L/MRotorMecha4.L
+        weight: 0
+      - path: ArmatureMainRotor/MRotorMecha1.L/MRotorMecha2.L/MRotorMecha3.L/MRotorMecha4.L/MRotorMecha4.L_end
+        weight: 0
+      - path: ArmatureMainRotor/MRotorMecha1.R
+        weight: 0
+      - path: ArmatureMainRotor/MRotorMecha1.R/MRotorMecha2.R
+        weight: 0
+      - path: ArmatureMainRotor/MRotorMecha1.R/MRotorMecha2.R/MRotorMecha3.R
+        weight: 0
+      - path: ArmatureMainRotor/MRotorMecha1.R/MRotorMecha2.R/MRotorMecha3.R/MRotorMecha4.R
+        weight: 0
+      - path: ArmatureMainRotor/MRotorMecha1.R/MRotorMecha2.R/MRotorMecha3.R/MRotorMecha4.R/MRotorMecha4.R_end
+        weight: 0
+      - path: ArmatureMainRotor/MRotorStatic
+        weight: 0
+      - path: ArmatureMainRotor/MRotorStatic/MRotorStatic_end
+        weight: 0
+      - path: ArmatureTailRotor
+        weight: 0
+      - path: ArmatureTailRotor/ColliderTailRotor2
+        weight: 0
+      - path: ArmatureTailRotor/TRotor.L
+        weight: 0
+      - path: ArmatureTailRotor/TRotor.L/TRotor.L_end
+        weight: 0
+      - path: ArmatureTailRotor/TRotor.R
+        weight: 0
+      - path: ArmatureTailRotor/TRotor.R/TRotor.R_end
+        weight: 0
+      - path: ArmatureTailRotor/TRotorPedalController
+        weight: 0
+      - path: ArmatureTailRotor/TRotorPedalController/TRotorPedalController_end
+        weight: 0
+      - path: ArmatureTailRotor/TRotorStatic
+        weight: 0
+      - path: ArmatureTailRotor/TRotorStatic/TRotorStatic_end
+        weight: 0
+      - path: ArmatureTailRotor/TRotorTurnController
+        weight: 0
+      - path: ArmatureTailRotor/TRotorTurnController/TRotorTurnController_end
+        weight: 0
+      - path: Cockpit_LOD0
+        weight: 0
+      - path: Cockpit_LOD1
+        weight: 0
+      - path: Cockpit_LOD2
+        weight: 0
+      - path: ColliderEngine
+        weight: 0
+      - path: ColliderFuselage
+        weight: 0
+      - path: ColliderLanding.L
+        weight: 0
+      - path: ColliderLanding.R
+        weight: 0
+      - path: ColliderMainRotor
+        weight: 0
+      - path: ColliderRadar
+        weight: 0
+      - path: ColliderTailRotor1
+        weight: 0
+      - path: ColliderTorque.0
+        weight: 0
+      - path: ColliderTorque.1
+        weight: 0
+      - path: ColliderTorque.2
+        weight: 0
+      - path: ColliderTorque.3
+        weight: 0
+      - path: EmptyRadar
+        weight: 0
+      - path: EmptyRadar/Radar_LOD0
+        weight: 0
+      - path: EmptyRadar/Radar_LOD1
+        weight: 0
+      - path: EmptyRadar/Radar_LOD2
+        weight: 0
+      - path: EmptyTurret
+        weight: 0
+      - path: EmptyTurret/ColliderTurret
+        weight: 0
+      - path: EmptyTurret/EmptyCanon
+        weight: 0
+      - path: EmptyTurret/EmptyCanon/Canon_LOD0
+        weight: 0
+      - path: EmptyTurret/EmptyCanon/Canon_LOD1
+        weight: 0
+      - path: EmptyTurret/EmptyCanon/Canon_LOD2
+        weight: 0
+      - path: EmptyTurret/EmptyCanon/ColliderCanon
+        weight: 0
+      - path: EmptyTurret/Tourelle_LOD0
+        weight: 0
+      - path: EmptyTurret/Tourelle_LOD1
+        weight: 0
+      - path: EmptyTurret/Tourelle_LOD2
+        weight: 0
+      - path: FakeMainRotorBlade
+        weight: 0
+      - path: FakeTailRotor
+        weight: 0
+      - path: Fuselage_LOD0
+        weight: 0
+      - path: Fuselage_LOD1
+        weight: 0
+      - path: Fuselage_LOD2
+        weight: 0
+      - path: Fuselage_LOD2.007
+        weight: 0
+      - path: Fuselage_LOD2.008
+        weight: 0
+      - path: GunnerDoor_LOD0
+        weight: 0
+      - path: GunnerDoor_LOD1
+        weight: 0
+      - path: GunnerDoor_LOD2
+        weight: 0
+      - path: MainRotor_LOD0
+        weight: 0
+      - path: MainRotor_LOD1
+        weight: 0
+      - path: MainRotor_LOD2
+        weight: 0
+      - path: Nacelles Missiles_LOD0
+        weight: 0
+      - path: Nacelles Missiles_LOD1
+        weight: 0
+      - path: Nacelles Missiles_LOD2
+        weight: 0
+      - path: Nacelles Rockets_LOD0
+        weight: 0
+      - path: Nacelles Rockets_LOD1
+        weight: 0
+      - path: Nacelles Rockets_LOD2
+        weight: 0
+      - path: PilotDoor_LOD0
+        weight: 0
+      - path: PilotDoor_LOD1
+        weight: 0
+      - path: PilotDoor_LOD2
+        weight: 0
+      - path: TailRotor_LOD0
+        weight: 0
+      - path: TailRotor_LOD1
+        weight: 0
+      - path: TailRotor_LOD2
+        weight: 0
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: MainRotorBendAction
+      takeName: ArmatureMainRotor|ArmatureMainRotorAction
+      firstFrame: 0
+      lastFrame: 30
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: ArmatureDoor
+        weight: 0
+      - path: ArmatureDoor/GunnerDoor
+        weight: 0
+      - path: ArmatureDoor/GunnerDoor/GunnerDoor_end
+        weight: 0
+      - path: ArmatureDoor/GunnerDoorController
+        weight: 0
+      - path: ArmatureDoor/GunnerDoorController/GunnerDoorController_end
+        weight: 0
+      - path: ArmatureDoor/PilotDoor
+        weight: 0
+      - path: ArmatureDoor/PilotDoor/PilotDoor_end
+        weight: 0
+      - path: ArmatureDoor/PilotDoorController
+        weight: 0
+      - path: ArmatureDoor/PilotDoorController/PilotDoorController_end
+        weight: 0
+      - path: ArmatureMainRotor
+        weight: 1
+      - path: ArmatureMainRotor/BendController
+        weight: 1
+      - path: ArmatureMainRotor/BendController/BendController_end
+        weight: 1
+      - path: ArmatureMainRotor/CollectiveController
+        weight: 0
+      - path: ArmatureMainRotor/CollectiveController/CollectiveController_end
+        weight: 0
+      - path: ArmatureMainRotor/ColliderBlade.L
+        weight: 0
+      - path: ArmatureMainRotor/ColliderBlade.R
+        weight: 0
+      - path: ArmatureMainRotor/EmptyMainBladeRotor
+        weight: 0
+      - path: ArmatureMainRotor/EmptyMainBladeRotor/MainRotorBlade_LOD0
+        weight: 0
+      - path: ArmatureMainRotor/EmptyMainBladeRotor/MainRotorBlade_LOD1
+        weight: 0
+      - path: ArmatureMainRotor/EmptyMainBladeRotor/MainRotorBlade_LOD2
+        weight: 0
+      - path: ArmatureMainRotor/MRotorC
+        weight: 0
+      - path: ArmatureMainRotor/MRotorC/MRotorC_end
+        weight: 0
+      - path: ArmatureMainRotor/MRotorCollective.L
+        weight: 1
+      - path: ArmatureMainRotor/MRotorCollective.L/MRotor1.L
+        weight: 1
+      - path: ArmatureMainRotor/MRotorCollective.L/MRotor1.L/MRotor2.L
+        weight: 1
+      - path: ArmatureMainRotor/MRotorCollective.L/MRotor1.L/MRotor2.L/MRotor3.L
+        weight: 1
+      - path: ArmatureMainRotor/MRotorCollective.L/MRotor1.L/MRotor2.L/MRotor3.L/MRotor4.L
+        weight: 1
+      - path: ArmatureMainRotor/MRotorCollective.L/MRotor1.L/MRotor2.L/MRotor3.L/MRotor4.L/MRotor4.L_end
+        weight: 1
+      - path: ArmatureMainRotor/MRotorCollective.R
+        weight: 1
+      - path: ArmatureMainRotor/MRotorCollective.R/MRotor1.R
+        weight: 1
+      - path: ArmatureMainRotor/MRotorCollective.R/MRotor1.R/MRotor2.R
+        weight: 1
+      - path: ArmatureMainRotor/MRotorCollective.R/MRotor1.R/MRotor2.R/MRotor3.R
+        weight: 1
+      - path: ArmatureMainRotor/MRotorCollective.R/MRotor1.R/MRotor2.R/MRotor3.R/MRotor4.R
+        weight: 1
+      - path: ArmatureMainRotor/MRotorCollective.R/MRotor1.R/MRotor2.R/MRotor3.R/MRotor4.R/MRotor4.R_end
+        weight: 1
+      - path: ArmatureMainRotor/MRotorCollectiveC
+        weight: 0
+      - path: ArmatureMainRotor/MRotorCollectiveC/MRotorCollectiveC_end
+        weight: 0
+      - path: ArmatureMainRotor/MRotorMecha1.L
+        weight: 0
+      - path: ArmatureMainRotor/MRotorMecha1.L/MRotorMecha2.L
+        weight: 0
+      - path: ArmatureMainRotor/MRotorMecha1.L/MRotorMecha2.L/MRotorMecha3.L
+        weight: 0
+      - path: ArmatureMainRotor/MRotorMecha1.L/MRotorMecha2.L/MRotorMecha3.L/MRotorMecha4.L
+        weight: 0
+      - path: ArmatureMainRotor/MRotorMecha1.L/MRotorMecha2.L/MRotorMecha3.L/MRotorMecha4.L/MRotorMecha4.L_end
+        weight: 0
+      - path: ArmatureMainRotor/MRotorMecha1.R
+        weight: 0
+      - path: ArmatureMainRotor/MRotorMecha1.R/MRotorMecha2.R
+        weight: 0
+      - path: ArmatureMainRotor/MRotorMecha1.R/MRotorMecha2.R/MRotorMecha3.R
+        weight: 0
+      - path: ArmatureMainRotor/MRotorMecha1.R/MRotorMecha2.R/MRotorMecha3.R/MRotorMecha4.R
+        weight: 0
+      - path: ArmatureMainRotor/MRotorMecha1.R/MRotorMecha2.R/MRotorMecha3.R/MRotorMecha4.R/MRotorMecha4.R_end
+        weight: 0
+      - path: ArmatureMainRotor/MRotorStatic
+        weight: 0
+      - path: ArmatureMainRotor/MRotorStatic/MRotorStatic_end
+        weight: 0
+      - path: ArmatureTailRotor
+        weight: 0
+      - path: ArmatureTailRotor/ColliderTailRotor2
+        weight: 0
+      - path: ArmatureTailRotor/TRotor.L
+        weight: 0
+      - path: ArmatureTailRotor/TRotor.L/TRotor.L_end
+        weight: 0
+      - path: ArmatureTailRotor/TRotor.R
+        weight: 0
+      - path: ArmatureTailRotor/TRotor.R/TRotor.R_end
+        weight: 0
+      - path: ArmatureTailRotor/TRotorPedalController
+        weight: 0
+      - path: ArmatureTailRotor/TRotorPedalController/TRotorPedalController_end
+        weight: 0
+      - path: ArmatureTailRotor/TRotorStatic
+        weight: 0
+      - path: ArmatureTailRotor/TRotorStatic/TRotorStatic_end
+        weight: 0
+      - path: ArmatureTailRotor/TRotorTurnController
+        weight: 0
+      - path: ArmatureTailRotor/TRotorTurnController/TRotorTurnController_end
+        weight: 0
+      - path: Cockpit_LOD0
+        weight: 0
+      - path: Cockpit_LOD1
+        weight: 0
+      - path: Cockpit_LOD2
+        weight: 0
+      - path: ColliderEngine
+        weight: 0
+      - path: ColliderFuselage
+        weight: 0
+      - path: ColliderLanding.L
+        weight: 0
+      - path: ColliderLanding.R
+        weight: 0
+      - path: ColliderMainRotor
+        weight: 0
+      - path: ColliderRadar
+        weight: 0
+      - path: ColliderTailRotor1
+        weight: 0
+      - path: ColliderTorque.0
+        weight: 0
+      - path: ColliderTorque.1
+        weight: 0
+      - path: ColliderTorque.2
+        weight: 0
+      - path: ColliderTorque.3
+        weight: 0
+      - path: EmptyRadar
+        weight: 0
+      - path: EmptyRadar/Radar_LOD0
+        weight: 0
+      - path: EmptyRadar/Radar_LOD1
+        weight: 0
+      - path: EmptyRadar/Radar_LOD2
+        weight: 0
+      - path: EmptyTurret
+        weight: 0
+      - path: EmptyTurret/ColliderTurret
+        weight: 0
+      - path: EmptyTurret/EmptyCanon
+        weight: 0
+      - path: EmptyTurret/EmptyCanon/Canon_LOD0
+        weight: 0
+      - path: EmptyTurret/EmptyCanon/Canon_LOD1
+        weight: 0
+      - path: EmptyTurret/EmptyCanon/Canon_LOD2
+        weight: 0
+      - path: EmptyTurret/EmptyCanon/ColliderCanon
+        weight: 0
+      - path: EmptyTurret/Tourelle_LOD0
+        weight: 0
+      - path: EmptyTurret/Tourelle_LOD1
+        weight: 0
+      - path: EmptyTurret/Tourelle_LOD2
+        weight: 0
+      - path: FakeMainRotorBlade
+        weight: 0
+      - path: FakeTailRotor
+        weight: 0
+      - path: Fuselage_LOD0
+        weight: 0
+      - path: Fuselage_LOD1
+        weight: 0
+      - path: Fuselage_LOD2
+        weight: 0
+      - path: Fuselage_LOD2.007
+        weight: 0
+      - path: Fuselage_LOD2.008
+        weight: 0
+      - path: GunnerDoor_LOD0
+        weight: 0
+      - path: GunnerDoor_LOD1
+        weight: 0
+      - path: GunnerDoor_LOD2
+        weight: 0
+      - path: MainRotor_LOD0
+        weight: 0
+      - path: MainRotor_LOD1
+        weight: 0
+      - path: MainRotor_LOD2
+        weight: 0
+      - path: Nacelles Missiles_LOD0
+        weight: 0
+      - path: Nacelles Missiles_LOD1
+        weight: 0
+      - path: Nacelles Missiles_LOD2
+        weight: 0
+      - path: Nacelles Rockets_LOD0
+        weight: 0
+      - path: Nacelles Rockets_LOD1
+        weight: 0
+      - path: Nacelles Rockets_LOD2
+        weight: 0
+      - path: PilotDoor_LOD0
+        weight: 0
+      - path: PilotDoor_LOD1
+        weight: 0
+      - path: PilotDoor_LOD2
+        weight: 0
+      - path: TailRotor_LOD0
+        weight: 0
+      - path: TailRotor_LOD1
+        weight: 0
+      - path: TailRotor_LOD2
+        weight: 0
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: MainRotorCollectiveAction
+      takeName: ArmatureMainRotor|ArmatureMainRotorAction
+      firstFrame: 60
+      lastFrame: 90
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: ArmatureDoor
+        weight: 0
+      - path: ArmatureDoor/GunnerDoor
+        weight: 0
+      - path: ArmatureDoor/GunnerDoor/GunnerDoor_end
+        weight: 0
+      - path: ArmatureDoor/GunnerDoorController
+        weight: 0
+      - path: ArmatureDoor/GunnerDoorController/GunnerDoorController_end
+        weight: 0
+      - path: ArmatureDoor/PilotDoor
+        weight: 0
+      - path: ArmatureDoor/PilotDoor/PilotDoor_end
+        weight: 0
+      - path: ArmatureDoor/PilotDoorController
+        weight: 0
+      - path: ArmatureDoor/PilotDoorController/PilotDoorController_end
+        weight: 0
+      - path: ArmatureMainRotor
+        weight: 1
+      - path: ArmatureMainRotor/BendController
+        weight: 0
+      - path: ArmatureMainRotor/BendController/BendController_end
+        weight: 0
+      - path: ArmatureMainRotor/CollectiveController
+        weight: 0
+      - path: ArmatureMainRotor/CollectiveController/CollectiveController_end
+        weight: 0
+      - path: ArmatureMainRotor/ColliderBlade.L
+        weight: 0
+      - path: ArmatureMainRotor/ColliderBlade.R
+        weight: 0
+      - path: ArmatureMainRotor/EmptyMainBladeRotor
+        weight: 0
+      - path: ArmatureMainRotor/EmptyMainBladeRotor/MainRotorBlade_LOD0
+        weight: 0
+      - path: ArmatureMainRotor/EmptyMainBladeRotor/MainRotorBlade_LOD1
+        weight: 0
+      - path: ArmatureMainRotor/EmptyMainBladeRotor/MainRotorBlade_LOD2
+        weight: 0
+      - path: ArmatureMainRotor/MRotorC
+        weight: 0
+      - path: ArmatureMainRotor/MRotorC/MRotorC_end
+        weight: 0
+      - path: ArmatureMainRotor/MRotorCollective.L
+        weight: 1
+      - path: ArmatureMainRotor/MRotorCollective.L/MRotor1.L
+        weight: 0
+      - path: ArmatureMainRotor/MRotorCollective.L/MRotor1.L/MRotor2.L
+        weight: 0
+      - path: ArmatureMainRotor/MRotorCollective.L/MRotor1.L/MRotor2.L/MRotor3.L
+        weight: 0
+      - path: ArmatureMainRotor/MRotorCollective.L/MRotor1.L/MRotor2.L/MRotor3.L/MRotor4.L
+        weight: 0
+      - path: ArmatureMainRotor/MRotorCollective.L/MRotor1.L/MRotor2.L/MRotor3.L/MRotor4.L/MRotor4.L_end
+        weight: 0
+      - path: ArmatureMainRotor/MRotorCollective.R
+        weight: 1
+      - path: ArmatureMainRotor/MRotorCollective.R/MRotor1.R
+        weight: 0
+      - path: ArmatureMainRotor/MRotorCollective.R/MRotor1.R/MRotor2.R
+        weight: 0
+      - path: ArmatureMainRotor/MRotorCollective.R/MRotor1.R/MRotor2.R/MRotor3.R
+        weight: 0
+      - path: ArmatureMainRotor/MRotorCollective.R/MRotor1.R/MRotor2.R/MRotor3.R/MRotor4.R
+        weight: 0
+      - path: ArmatureMainRotor/MRotorCollective.R/MRotor1.R/MRotor2.R/MRotor3.R/MRotor4.R/MRotor4.R_end
+        weight: 0
+      - path: ArmatureMainRotor/MRotorCollectiveC
+        weight: 0
+      - path: ArmatureMainRotor/MRotorCollectiveC/MRotorCollectiveC_end
+        weight: 0
+      - path: ArmatureMainRotor/MRotorMecha1.L
+        weight: 1
+      - path: ArmatureMainRotor/MRotorMecha1.L/MRotorMecha2.L
+        weight: 1
+      - path: ArmatureMainRotor/MRotorMecha1.L/MRotorMecha2.L/MRotorMecha3.L
+        weight: 1
+      - path: ArmatureMainRotor/MRotorMecha1.L/MRotorMecha2.L/MRotorMecha3.L/MRotorMecha4.L
+        weight: 1
+      - path: ArmatureMainRotor/MRotorMecha1.L/MRotorMecha2.L/MRotorMecha3.L/MRotorMecha4.L/MRotorMecha4.L_end
+        weight: 1
+      - path: ArmatureMainRotor/MRotorMecha1.R
+        weight: 1
+      - path: ArmatureMainRotor/MRotorMecha1.R/MRotorMecha2.R
+        weight: 1
+      - path: ArmatureMainRotor/MRotorMecha1.R/MRotorMecha2.R/MRotorMecha3.R
+        weight: 1
+      - path: ArmatureMainRotor/MRotorMecha1.R/MRotorMecha2.R/MRotorMecha3.R/MRotorMecha4.R
+        weight: 1
+      - path: ArmatureMainRotor/MRotorMecha1.R/MRotorMecha2.R/MRotorMecha3.R/MRotorMecha4.R/MRotorMecha4.R_end
+        weight: 1
+      - path: ArmatureMainRotor/MRotorStatic
+        weight: 0
+      - path: ArmatureMainRotor/MRotorStatic/MRotorStatic_end
+        weight: 0
+      - path: ArmatureTailRotor
+        weight: 0
+      - path: ArmatureTailRotor/ColliderTailRotor2
+        weight: 0
+      - path: ArmatureTailRotor/TRotor.L
+        weight: 0
+      - path: ArmatureTailRotor/TRotor.L/TRotor.L_end
+        weight: 0
+      - path: ArmatureTailRotor/TRotor.R
+        weight: 0
+      - path: ArmatureTailRotor/TRotor.R/TRotor.R_end
+        weight: 0
+      - path: ArmatureTailRotor/TRotorPedalController
+        weight: 0
+      - path: ArmatureTailRotor/TRotorPedalController/TRotorPedalController_end
+        weight: 0
+      - path: ArmatureTailRotor/TRotorStatic
+        weight: 0
+      - path: ArmatureTailRotor/TRotorStatic/TRotorStatic_end
+        weight: 0
+      - path: ArmatureTailRotor/TRotorTurnController
+        weight: 0
+      - path: ArmatureTailRotor/TRotorTurnController/TRotorTurnController_end
+        weight: 0
+      - path: Cockpit_LOD0
+        weight: 0
+      - path: Cockpit_LOD1
+        weight: 0
+      - path: Cockpit_LOD2
+        weight: 0
+      - path: ColliderEngine
+        weight: 0
+      - path: ColliderFuselage
+        weight: 0
+      - path: ColliderLanding.L
+        weight: 0
+      - path: ColliderLanding.R
+        weight: 0
+      - path: ColliderMainRotor
+        weight: 0
+      - path: ColliderRadar
+        weight: 0
+      - path: ColliderTailRotor1
+        weight: 0
+      - path: ColliderTorque.0
+        weight: 0
+      - path: ColliderTorque.1
+        weight: 0
+      - path: ColliderTorque.2
+        weight: 0
+      - path: ColliderTorque.3
+        weight: 0
+      - path: EmptyRadar
+        weight: 0
+      - path: EmptyRadar/Radar_LOD0
+        weight: 0
+      - path: EmptyRadar/Radar_LOD1
+        weight: 0
+      - path: EmptyRadar/Radar_LOD2
+        weight: 0
+      - path: EmptyTurret
+        weight: 0
+      - path: EmptyTurret/ColliderTurret
+        weight: 0
+      - path: EmptyTurret/EmptyCanon
+        weight: 0
+      - path: EmptyTurret/EmptyCanon/Canon_LOD0
+        weight: 0
+      - path: EmptyTurret/EmptyCanon/Canon_LOD1
+        weight: 0
+      - path: EmptyTurret/EmptyCanon/Canon_LOD2
+        weight: 0
+      - path: EmptyTurret/EmptyCanon/ColliderCanon
+        weight: 0
+      - path: EmptyTurret/Tourelle_LOD0
+        weight: 0
+      - path: EmptyTurret/Tourelle_LOD1
+        weight: 0
+      - path: EmptyTurret/Tourelle_LOD2
+        weight: 0
+      - path: FakeMainRotorBlade
+        weight: 0
+      - path: FakeTailRotor
+        weight: 0
+      - path: Fuselage_LOD0
+        weight: 0
+      - path: Fuselage_LOD1
+        weight: 0
+      - path: Fuselage_LOD2
+        weight: 0
+      - path: Fuselage_LOD2.007
+        weight: 0
+      - path: Fuselage_LOD2.008
+        weight: 0
+      - path: GunnerDoor_LOD0
+        weight: 0
+      - path: GunnerDoor_LOD1
+        weight: 0
+      - path: GunnerDoor_LOD2
+        weight: 0
+      - path: MainRotor_LOD0
+        weight: 0
+      - path: MainRotor_LOD1
+        weight: 0
+      - path: MainRotor_LOD2
+        weight: 0
+      - path: Nacelles Missiles_LOD0
+        weight: 0
+      - path: Nacelles Missiles_LOD1
+        weight: 0
+      - path: Nacelles Missiles_LOD2
+        weight: 0
+      - path: Nacelles Rockets_LOD0
+        weight: 0
+      - path: Nacelles Rockets_LOD1
+        weight: 0
+      - path: Nacelles Rockets_LOD2
+        weight: 0
+      - path: PilotDoor_LOD0
+        weight: 0
+      - path: PilotDoor_LOD1
+        weight: 0
+      - path: PilotDoor_LOD2
+        weight: 0
+      - path: TailRotor_LOD0
+        weight: 0
+      - path: TailRotor_LOD1
+        weight: 0
+      - path: TailRotor_LOD2
+        weight: 0
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: GunnerDoorAction
+      takeName: ArmatureDoor|ArmatureDoorAction
+      firstFrame: 60
+      lastFrame: 89
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: ArmatureDoor
+        weight: 1
+      - path: ArmatureDoor/GunnerDoor
+        weight: 1
+      - path: ArmatureDoor/GunnerDoor/GunnerDoor_end
+        weight: 0
+      - path: ArmatureDoor/GunnerDoorController
+        weight: 0
+      - path: ArmatureDoor/GunnerDoorController/GunnerDoorController_end
+        weight: 0
+      - path: ArmatureDoor/PilotDoor
+        weight: 0
+      - path: ArmatureDoor/PilotDoor/PilotDoor_end
+        weight: 0
+      - path: ArmatureDoor/PilotDoorController
+        weight: 0
+      - path: ArmatureDoor/PilotDoorController/PilotDoorController_end
+        weight: 0
+      - path: ArmatureMainRotor
+        weight: 0
+      - path: ArmatureMainRotor/BendController
+        weight: 0
+      - path: ArmatureMainRotor/BendController/BendController_end
+        weight: 0
+      - path: ArmatureMainRotor/CollectiveController
+        weight: 0
+      - path: ArmatureMainRotor/CollectiveController/CollectiveController_end
+        weight: 0
+      - path: ArmatureMainRotor/ColliderBlade.L
+        weight: 0
+      - path: ArmatureMainRotor/ColliderBlade.R
+        weight: 0
+      - path: ArmatureMainRotor/EmptyMainBladeRotor
+        weight: 0
+      - path: ArmatureMainRotor/EmptyMainBladeRotor/MainRotorBlade_LOD0
+        weight: 0
+      - path: ArmatureMainRotor/EmptyMainBladeRotor/MainRotorBlade_LOD1
+        weight: 0
+      - path: ArmatureMainRotor/EmptyMainBladeRotor/MainRotorBlade_LOD2
+        weight: 0
+      - path: ArmatureMainRotor/MRotorC
+        weight: 0
+      - path: ArmatureMainRotor/MRotorC/MRotorC_end
+        weight: 0
+      - path: ArmatureMainRotor/MRotorCollective.L
+        weight: 0
+      - path: ArmatureMainRotor/MRotorCollective.L/MRotor1.L
+        weight: 0
+      - path: ArmatureMainRotor/MRotorCollective.L/MRotor1.L/MRotor2.L
+        weight: 0
+      - path: ArmatureMainRotor/MRotorCollective.L/MRotor1.L/MRotor2.L/MRotor3.L
+        weight: 0
+      - path: ArmatureMainRotor/MRotorCollective.L/MRotor1.L/MRotor2.L/MRotor3.L/MRotor4.L
+        weight: 0
+      - path: ArmatureMainRotor/MRotorCollective.L/MRotor1.L/MRotor2.L/MRotor3.L/MRotor4.L/MRotor4.L_end
+        weight: 0
+      - path: ArmatureMainRotor/MRotorCollective.R
+        weight: 0
+      - path: ArmatureMainRotor/MRotorCollective.R/MRotor1.R
+        weight: 0
+      - path: ArmatureMainRotor/MRotorCollective.R/MRotor1.R/MRotor2.R
+        weight: 0
+      - path: ArmatureMainRotor/MRotorCollective.R/MRotor1.R/MRotor2.R/MRotor3.R
+        weight: 0
+      - path: ArmatureMainRotor/MRotorCollective.R/MRotor1.R/MRotor2.R/MRotor3.R/MRotor4.R
+        weight: 0
+      - path: ArmatureMainRotor/MRotorCollective.R/MRotor1.R/MRotor2.R/MRotor3.R/MRotor4.R/MRotor4.R_end
+        weight: 0
+      - path: ArmatureMainRotor/MRotorCollectiveC
+        weight: 0
+      - path: ArmatureMainRotor/MRotorCollectiveC/MRotorCollectiveC_end
+        weight: 0
+      - path: ArmatureMainRotor/MRotorMecha1.L
+        weight: 0
+      - path: ArmatureMainRotor/MRotorMecha1.L/MRotorMecha2.L
+        weight: 0
+      - path: ArmatureMainRotor/MRotorMecha1.L/MRotorMecha2.L/MRotorMecha3.L
+        weight: 0
+      - path: ArmatureMainRotor/MRotorMecha1.L/MRotorMecha2.L/MRotorMecha3.L/MRotorMecha4.L
+        weight: 0
+      - path: ArmatureMainRotor/MRotorMecha1.L/MRotorMecha2.L/MRotorMecha3.L/MRotorMecha4.L/MRotorMecha4.L_end
+        weight: 0
+      - path: ArmatureMainRotor/MRotorMecha1.R
+        weight: 0
+      - path: ArmatureMainRotor/MRotorMecha1.R/MRotorMecha2.R
+        weight: 0
+      - path: ArmatureMainRotor/MRotorMecha1.R/MRotorMecha2.R/MRotorMecha3.R
+        weight: 0
+      - path: ArmatureMainRotor/MRotorMecha1.R/MRotorMecha2.R/MRotorMecha3.R/MRotorMecha4.R
+        weight: 0
+      - path: ArmatureMainRotor/MRotorMecha1.R/MRotorMecha2.R/MRotorMecha3.R/MRotorMecha4.R/MRotorMecha4.R_end
+        weight: 0
+      - path: ArmatureMainRotor/MRotorStatic
+        weight: 0
+      - path: ArmatureMainRotor/MRotorStatic/MRotorStatic_end
+        weight: 0
+      - path: ArmatureTailRotor
+        weight: 0
+      - path: ArmatureTailRotor/ColliderTailRotor2
+        weight: 0
+      - path: ArmatureTailRotor/TRotor.L
+        weight: 0
+      - path: ArmatureTailRotor/TRotor.L/TRotor.L_end
+        weight: 0
+      - path: ArmatureTailRotor/TRotor.R
+        weight: 0
+      - path: ArmatureTailRotor/TRotor.R/TRotor.R_end
+        weight: 0
+      - path: ArmatureTailRotor/TRotorPedalController
+        weight: 0
+      - path: ArmatureTailRotor/TRotorPedalController/TRotorPedalController_end
+        weight: 0
+      - path: ArmatureTailRotor/TRotorStatic
+        weight: 0
+      - path: ArmatureTailRotor/TRotorStatic/TRotorStatic_end
+        weight: 0
+      - path: ArmatureTailRotor/TRotorTurnController
+        weight: 0
+      - path: ArmatureTailRotor/TRotorTurnController/TRotorTurnController_end
+        weight: 0
+      - path: Cockpit_LOD0
+        weight: 0
+      - path: Cockpit_LOD1
+        weight: 0
+      - path: Cockpit_LOD2
+        weight: 0
+      - path: ColliderEngine
+        weight: 0
+      - path: ColliderFuselage
+        weight: 0
+      - path: ColliderLanding.L
+        weight: 0
+      - path: ColliderLanding.R
+        weight: 0
+      - path: ColliderMainRotor
+        weight: 0
+      - path: ColliderRadar
+        weight: 0
+      - path: ColliderTailRotor1
+        weight: 0
+      - path: ColliderTorque.0
+        weight: 0
+      - path: ColliderTorque.1
+        weight: 0
+      - path: ColliderTorque.2
+        weight: 0
+      - path: ColliderTorque.3
+        weight: 0
+      - path: EmptyRadar
+        weight: 0
+      - path: EmptyRadar/Radar_LOD0
+        weight: 0
+      - path: EmptyRadar/Radar_LOD1
+        weight: 0
+      - path: EmptyRadar/Radar_LOD2
+        weight: 0
+      - path: EmptyTurret
+        weight: 0
+      - path: EmptyTurret/ColliderTurret
+        weight: 0
+      - path: EmptyTurret/EmptyCanon
+        weight: 0
+      - path: EmptyTurret/EmptyCanon/Canon_LOD0
+        weight: 0
+      - path: EmptyTurret/EmptyCanon/Canon_LOD1
+        weight: 0
+      - path: EmptyTurret/EmptyCanon/Canon_LOD2
+        weight: 0
+      - path: EmptyTurret/EmptyCanon/ColliderCanon
+        weight: 0
+      - path: EmptyTurret/Tourelle_LOD0
+        weight: 0
+      - path: EmptyTurret/Tourelle_LOD1
+        weight: 0
+      - path: EmptyTurret/Tourelle_LOD2
+        weight: 0
+      - path: FakeMainRotorBlade
+        weight: 0
+      - path: FakeTailRotor
+        weight: 0
+      - path: Fuselage_LOD0
+        weight: 0
+      - path: Fuselage_LOD1
+        weight: 0
+      - path: Fuselage_LOD2
+        weight: 0
+      - path: Fuselage_LOD2.007
+        weight: 0
+      - path: Fuselage_LOD2.008
+        weight: 0
+      - path: GunnerDoor_LOD0
+        weight: 0
+      - path: GunnerDoor_LOD1
+        weight: 0
+      - path: GunnerDoor_LOD2
+        weight: 0
+      - path: MainRotor_LOD0
+        weight: 0
+      - path: MainRotor_LOD1
+        weight: 0
+      - path: MainRotor_LOD2
+        weight: 0
+      - path: Nacelles Missiles_LOD0
+        weight: 0
+      - path: Nacelles Missiles_LOD1
+        weight: 0
+      - path: Nacelles Missiles_LOD2
+        weight: 0
+      - path: Nacelles Rockets_LOD0
+        weight: 0
+      - path: Nacelles Rockets_LOD1
+        weight: 0
+      - path: Nacelles Rockets_LOD2
+        weight: 0
+      - path: PilotDoor_LOD0
+        weight: 0
+      - path: PilotDoor_LOD1
+        weight: 0
+      - path: PilotDoor_LOD2
+        weight: 0
+      - path: TailRotor_LOD0
+        weight: 0
+      - path: TailRotor_LOD1
+        weight: 0
+      - path: TailRotor_LOD2
+        weight: 0
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages:
+    - 0.25
+    - 0.125
+    - 0.01
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
