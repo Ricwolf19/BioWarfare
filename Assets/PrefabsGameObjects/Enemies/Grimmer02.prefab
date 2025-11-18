@@ -526,6 +526,8 @@ GameObject:
   - component: {fileID: 3512892357093335988}
   - component: {fileID: 8370011694848330163}
   - component: {fileID: 9176589237463838998}
+  - component: {fileID: -5324197735220515077}
+  - component: {fileID: -1261293429140030038}
   m_Layer: 7
   m_Name: Grimmer02
   m_TagString: Enemy
@@ -1188,6 +1190,36 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-5324197735220515077
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2006741160468011218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8a58a7cc4d93f34d95d9c923bf11ce6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  icon: {fileID: 0}
+  image: {fileID: 0}
+  id: 0
+  addOnStart: 0
+--- !u!114 &-1261293429140030038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2006741160468011218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5556b18a1a7a40148d02701bc27bad1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyIcon: {fileID: 21300000, guid: 571cfa621ff17924daeb1020bbfa8b1b, type: 3}
+  registerOnStart: 0
 --- !u!1 &2072440578848178572
 GameObject:
   m_ObjectHideFlags: 0

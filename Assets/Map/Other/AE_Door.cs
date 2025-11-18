@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using cowsins;
+using BioWarfare.InfectedZones;
 
 namespace Art_Equilibrium
 {
@@ -28,7 +29,18 @@ namespace Art_Equilibrium
         public Color fontColor = Color.white;
         public Vector2 messagePosition = new Vector2(0.5f, 0.5f);
 
+        [Header("Zone Lock Settings")]
+        [Tooltip("Lock this door when an infected zone is active?")]
+        public bool lockDuringZoneCapture = false;
+        [Tooltip("Reference to the zone that controls this door (optional)")]
+        public InfectedZoneController controllingZone;
+        [Tooltip("Message shown when door is locked")]
+        public string lockedMessage = "⚠️ You need to disinfect the zone!!!";
+        [Tooltip("Color for locked message")]
+        public Color lockedMessageColor = Color.red;
+
         private string doorMessage = "";
+        private bool isLocked = false;
 
         [Header("Audio Settings")]
         public AudioClip openSound;
@@ -51,6 +63,13 @@ namespace Art_Equilibrium
             {
                 Debug.LogWarning("[AE_Door] InputManager not found. Door interactions may not work.");
             }
+
+            // Subscribe to zone events if controlling zone is assigned
+            if (lockDuringZoneCapture && controllingZone != null)
+            {
+                SubscribeToZoneEvents();
+                UpdateLockState();
+            }
         }
 
         private void Update()
@@ -66,10 +85,17 @@ namespace Art_Equilibrium
                 transform.rotation = Quaternion.Slerp(transform.rotation, targetRot, Time.deltaTime * smooth);
             }
 
+            // Update lock state if zone locking is enabled
+            if (lockDuringZoneCapture && controllingZone != null)
+            {
+                UpdateLockState();
+            }
+
             // Use the new Input System via FPS Engine's InputManager
             if (inputManager != null)
             {
-                if (inputManager.StartInteraction && trig && !isKeyPressed)
+                // Only allow interaction if door is not locked
+                if (inputManager.StartInteraction && trig && !isKeyPressed && !isLocked)
                 {
                     open = !open;
                     isKeyPressed = true;
@@ -82,18 +108,29 @@ namespace Art_Equilibrium
                 }
             }
 
-            doorMessage = trig ? (open ? closeMessage : openMessage) : "";
+            // Update door message based on lock state
+            if (isLocked)
+            {
+                doorMessage = trig ? lockedMessage : "";
+            }
+            else
+            {
+                doorMessage = trig ? (open ? closeMessage : openMessage) : "";
+            }
         }
 
         private void OnGUI()
         {
             if (!string.IsNullOrEmpty(doorMessage))
             {
+                // Use red color if door is locked, otherwise use normal color
+                Color messageColor = isLocked ? lockedMessageColor : fontColor;
+
                 GUIStyle style = new GUIStyle(GUI.skin.label)
                 {
                     alignment = TextAnchor.MiddleCenter,
                     fontSize = fontSize,
-                    normal = { textColor = fontColor }
+                    normal = { textColor = messageColor }
                 };
 
                 if (messageFont != null)
@@ -145,5 +182,52 @@ namespace Art_Equilibrium
                 }
             }
         }
+
+        #region Zone Lock System
+
+        private void SubscribeToZoneEvents()
+        {
+            if (controllingZone != null)
+            {
+                // Listen to zone state changes
+                Debug.Log($"[AE_Door] Subscribed to zone events: {controllingZone.GetZoneData()?.zoneName}");
+            }
+        }
+
+        private void UpdateLockState()
+        {
+            if (controllingZone == null) return;
+
+            ZoneState state = controllingZone.GetState();
+
+            // Lock door when zone is active, capturing, or pillar is vulnerable
+            // Unlock when zone is locked (not started) or cleansed (completed)
+            isLocked = (state == ZoneState.Active || 
+                       state == ZoneState.Capturing || 
+                       state == ZoneState.PillarVulnerable);
+
+            // Force close door if it gets locked while open
+            if (isLocked && open)
+            {
+                open = false;
+                Debug.Log($"[AE_Door] Door force-closed due to zone lock");
+            }
+        }
+
+        /// <summary>
+        /// Manually lock/unlock the door (called by external systems)
+        /// </summary>
+        public void SetLocked(bool locked)
+        {
+            isLocked = locked;
+            if (isLocked && open)
+            {
+                open = false;
+            }
+        }
+
+        public bool IsLocked() => isLocked;
+
+        #endregion
     }
 }
