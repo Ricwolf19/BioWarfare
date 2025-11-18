@@ -27,11 +27,17 @@ namespace BioWarfare.InfectedZones
         [SerializeField] private TextMeshProUGUI pillarPromptText;
         [SerializeField] private Slider pillarHealthBar;
 
+        [Header("Notification UI")]
+        [SerializeField] private GameObject notificationPanel;
+        [SerializeField] private TextMeshProUGUI notificationText;
+        [SerializeField] private float notificationDuration = 3f;
+
         [Header("Settings")]
         [SerializeField] private bool showGlobalProgress = true;
         [SerializeField] private bool showCaptureUI = true;
 
         private InfectedZoneController currentZone;
+        private Coroutine notificationCoroutine;
 
         #region Unity Lifecycle
 
@@ -230,6 +236,72 @@ namespace BioWarfare.InfectedZones
             }
 
             HidePillarUI();
+        }
+
+        #endregion
+
+        #region Notification System
+
+        /// <summary>
+        /// Shows a temporary notification message to the player
+        /// </summary>
+        public void ShowNotification(string message)
+        {
+            if (notificationPanel == null || notificationText == null)
+            {
+                Debug.LogWarning("[InfectedZoneUI] Notification panel not assigned!");
+                return;
+            }
+
+            // Stop previous notification if active
+            if (notificationCoroutine != null)
+                StopCoroutine(notificationCoroutine);
+
+            notificationCoroutine = StartCoroutine(ShowNotificationCoroutine(message));
+        }
+
+        private System.Collections.IEnumerator ShowNotificationCoroutine(string message)
+        {
+            // Show notification
+            notificationPanel.SetActive(true);
+            notificationText.text = message;
+
+            // Optional: Fade in animation
+            CanvasGroup canvasGroup = notificationPanel.GetComponent<CanvasGroup>();
+            if (canvasGroup != null)
+            {
+                canvasGroup.alpha = 0f;
+                float fadeInTime = 0.3f;
+                float elapsed = 0f;
+
+                while (elapsed < fadeInTime)
+                {
+                    elapsed += Time.deltaTime;
+                    canvasGroup.alpha = Mathf.Lerp(0f, 1f, elapsed / fadeInTime);
+                    yield return null;
+                }
+                canvasGroup.alpha = 1f;
+            }
+
+            // Wait for duration
+            yield return new WaitForSeconds(notificationDuration);
+
+            // Optional: Fade out animation
+            if (canvasGroup != null)
+            {
+                float fadeOutTime = 0.3f;
+                float elapsed = 0f;
+
+                while (elapsed < fadeOutTime)
+                {
+                    elapsed += Time.deltaTime;
+                    canvasGroup.alpha = Mathf.Lerp(1f, 0f, elapsed / fadeOutTime);
+                    yield return null;
+                }
+            }
+
+            // Hide notification
+            notificationPanel.SetActive(false);
         }
 
         #endregion
