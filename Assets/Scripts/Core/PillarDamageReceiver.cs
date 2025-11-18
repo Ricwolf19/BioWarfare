@@ -15,12 +15,14 @@ namespace BioWarfare.InfectedZones
 
         [Header("Visual Feedback")]
         [SerializeField] private GameObject destructionVFX;
+        [SerializeField] private GameObject invulnerableVFX; // VFX when hit while invulnerable (optional)
         [SerializeField] private Material[] damageMaterials; // Progressive damage states
         [SerializeField] private MeshRenderer pillarRenderer;
 
         [Header("Audio")]
         [SerializeField] private AudioClip hitSound;
         [SerializeField] private AudioClip destructionSound;
+        [SerializeField] private AudioClip invulnerableSound; // Sound when pillar is hit but invulnerable
         private AudioSource audioSource;
 
         private InfectedZoneController parentZone;
@@ -68,6 +70,13 @@ namespace BioWarfare.InfectedZones
         {
             if (isDestroyed) return;
 
+            // ✅ ZONE CAPTURE CHECK: Prevent damage until zone is captured
+            if (parentZone != null && parentZone.GetState() != ZoneState.PillarVulnerable)
+            {
+                Debug.Log($"[Pillar] Cannot damage pillar - Zone must be captured first! Current state: {parentZone.GetState()}");
+                return;
+            }
+
             // Apply critical hit multiplier if needed
             float finalDamage = damage;
             if (crit)
@@ -101,12 +110,13 @@ namespace BioWarfare.InfectedZones
         /// </summary>
         public void Hit(float damage, Vector3 hitPoint, Vector3 hitDirection)
         {
-            Debug.Log($"[Pillar] Hit at {hitPoint} with {damage} damage");
-            
-            // Optional: Spawn hit effect at hit point
-            // if (hitVFX != null)
-            //     Instantiate(hitVFX, hitPoint, Quaternion.LookRotation(hitDirection));
-            
+            // ✅ ZONE CAPTURE CHECK: Prevent damage until zone is captured
+            if (parentZone != null && parentZone.GetState() != ZoneState.PillarVulnerable)
+            {
+                Debug.Log($"[Pillar] Cannot damage pillar - Zone must be captured first! Current state: {parentZone.GetState()}");
+                return;
+            }
+
             Damage(damage, false); // Normal hit, not a crit
         }
 
@@ -134,6 +144,27 @@ namespace BioWarfare.InfectedZones
             materialIndex = Mathf.Clamp(materialIndex, 0, damageMaterials.Length - 1);
 
             pillarRenderer.material = damageMaterials[materialIndex];
+        }
+
+        /// <summary>
+        /// Called when pillar is hit but invulnerable (zone not captured yet)
+        /// Provides feedback to player
+        /// </summary>
+        private void OnInvulnerableHit()
+        {
+            // Play invulnerable sound effect
+            if (invulnerableSound != null && audioSource != null)
+            {
+                audioSource.PlayOneShot(invulnerableSound);
+            }
+
+            // Spawn shield/block VFX
+            if (invulnerableVFX != null)
+            {
+                Instantiate(invulnerableVFX, transform.position, Quaternion.identity);
+            }
+
+            // TODO: Show UI message "Capture the zone first!" 
         }
 
         #endregion

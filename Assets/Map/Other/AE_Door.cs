@@ -24,7 +24,7 @@ namespace Art_Equilibrium
         public string openMessage = "Open E";
         public string closeMessage = "Close E";
         public Font messageFont;
-        public int fontSize = 24;
+        public int fontSize = 35;
         public Color fontColor = Color.white;
         public Vector2 messagePosition = new Vector2(0.5f, 0.5f);
 

@@ -36,7 +36,8 @@ namespace cowsins
 
             foreach (CompassElement el in compassElements)
             {
-                el.image.rectTransform.anchoredPosition = GetElementPositionInCompass(el);
+                if (el != null && el.image != null)
+                    el.image.rectTransform.anchoredPosition = GetElementPositionInCompass(el);
             }
         }
 
@@ -53,7 +54,8 @@ namespace cowsins
         public void RemoveCompassElement(CompassElement element)
         {
             compassElements.Remove(element);
-            Destroy(element.image);
+            if (element.image != null)
+                Destroy(element.image.gameObject);
         }
 
         // Calculates the position of the image depending on where the compass element and the players are.

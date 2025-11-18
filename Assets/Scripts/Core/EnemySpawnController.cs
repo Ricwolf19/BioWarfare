@@ -154,7 +154,7 @@ namespace BioWarfare.InfectedZones
             GameObject enemyPrefab = prefabsToUse[Random.Range(0, prefabsToUse.Length)];
 
             // Spawn VFX first (if available)
-            if (zoneData.normalEnemySpawnVFX != null)
+            if (zoneData != null && zoneData.normalEnemySpawnVFX != null)
             {
                 Instantiate(zoneData.normalEnemySpawnVFX, spawnPoint.position, spawnPoint.rotation);
             }
@@ -262,7 +262,7 @@ namespace BioWarfare.InfectedZones
                 }
 
                 // Spawn boss VFX (dramatic entrance)
-                if (zoneData.bossEnemySpawnVFX != null)
+                if (zoneData != null && zoneData.bossEnemySpawnVFX != null)
                 {
                     Instantiate(zoneData.bossEnemySpawnVFX, spawnPoint.position, spawnPoint.rotation);
                 }
