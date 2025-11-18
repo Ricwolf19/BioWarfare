@@ -921,6 +921,7 @@ GameObject:
   - component: {fileID: 4952142416771936245}
   - component: {fileID: 4009354947578455203}
   - component: {fileID: 2032634890787008669}
+  - component: {fileID: 1405066766382789777}
   m_Layer: 7
   m_Name: KingGrimmer
   m_TagString: Enemy
@@ -1075,7 +1076,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SoundProfile: {fileID: 11400000, guid: fa28c18c39f954b279857618cb29dc2b, type: 2}
-  SoundProfileFoldout: 0
+  SoundProfileFoldout: 1
   HideSettingsFoldout: 0
   IdleSoundsSeconds: 0
   IdleSoundsTimer: 0
@@ -1322,9 +1323,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4435fe59ad515fd4d94c2dd09006f199, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentHealth: 2000
-  StartingHealth: 2000
-  HealRate: 1
+  CurrentHealth: 5000
+  StartingHealth: 5000
+  HealRate: 2
   AttachHitEffects: 0
   Immortal: 0
   CurrentActiveEffects: []
@@ -1334,7 +1335,7 @@ MonoBehaviour:
   HitEffectTimeoutSeconds: 3
   HitEffectsList: []
   HideSettingsFoldout: 0
-  HealthFoldout: 0
+  HealthFoldout: 1
 --- !u!114 &1874393431887452257
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1625,6 +1626,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1405066766382789777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2451677415677226599}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a08ea108434035448a1759131e2f792, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2721341529612487662
 GameObject:
   m_ObjectHideFlags: 0
