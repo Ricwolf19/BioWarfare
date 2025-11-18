@@ -49,9 +49,10 @@ namespace BioWarfare.InfectedZones
 
         private void Awake()
         {
-            // Setup collider as trigger
+            // Setup collider - will be non-trigger to physically block player
             Collider col = GetComponent<Collider>();
-            col.isTrigger = true;
+            // Start as solid (non-trigger) to block player
+            col.isTrigger = false;
 
             // Setup audio source
             audioSource = GetComponent<AudioSource>();
@@ -206,17 +207,25 @@ namespace BioWarfare.InfectedZones
 
         #region Collision Detection
 
-        private void OnTriggerEnter(Collider other)
+        private void OnCollisionEnter(Collision collision)
         {
-            if (other.CompareTag("Player"))
+            if (collision.gameObject.CompareTag("Player"))
             {
                 playerNearby = true;
             }
         }
 
-        private void OnTriggerExit(Collider other)
+        private void OnCollisionStay(Collision collision)
         {
-            if (other.CompareTag("Player"))
+            if (collision.gameObject.CompareTag("Player"))
+            {
+                playerNearby = true;
+            }
+        }
+
+        private void OnCollisionExit(Collision collision)
+        {
+            if (collision.gameObject.CompareTag("Player"))
             {
                 playerNearby = false;
             }

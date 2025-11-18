@@ -148,9 +148,7 @@ namespace BioWarfare.GameFlow
                 ShowExtractionNotification();
             }
 
-            // Lock player controls
-            LockPlayerControls();
-
+            // Don't lock controls - scene transition will naturally end player control
             // Start transition after delay
             Invoke(nameof(TransitionToEnding), transitionDelay);
         }
@@ -166,28 +164,6 @@ namespace BioWarfare.GameFlow
             else
             {
                 Debug.Log($"[GameEndingController] {extractionMessage}");
-            }
-        }
-
-        private void LockPlayerControls()
-        {
-            // Disable all player controls via FPS Engine PlayerControl
-            var player = GameObject.FindGameObjectWithTag("Player");
-            if (player != null)
-            {
-                var playerControl = player.GetComponent<IPlayerControlProvider>();
-                if (playerControl != null)
-                {
-                    playerControl.LoseControl();
-                    Debug.Log("[GameEndingController] Player controls locked.");
-                }
-
-                // Also disable game input
-                var playerDeps = player.GetComponent<PlayerDependencies>();
-                if (playerDeps != null && playerDeps.InputManager != null)
-                {
-                    playerDeps.InputManager.ToggleGameControls(false);
-                }
             }
         }
 
@@ -210,6 +186,10 @@ namespace BioWarfare.GameFlow
         private void LoadEndingScene()
         {
             Debug.Log($"[GameEndingController] Loading ending scene: {endingSceneName}");
+
+            // No need to manipulate input controls
+            // Scene change will naturally reset player state
+            // New scenes (video/menu) start with fresh input state
 
             // Check if scene exists in build settings
             if (SceneExists(endingSceneName))

@@ -1912,8 +1912,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4435fe59ad515fd4d94c2dd09006f199, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentHealth: 350
-  StartingHealth: 350
+  CurrentHealth: 500
+  StartingHealth: 500
   HealRate: 3
   AttachHitEffects: 1
   Immortal: 0
