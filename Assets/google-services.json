@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "947343635022",
+    "project_id": "biowarfare-21dca",
+    "storage_bucket": "biowarfare-21dca.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:947343635022:android:d5d496dea0c2bf922b091f",
+        "android_client_info": {
+          "package_name": "com.elvaticano.BioWarfare"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBiTKFSUzsydDqsgpCC3_G9xcKvfndeFjg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
