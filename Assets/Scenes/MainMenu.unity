@@ -9811,8 +9811,8 @@ MonoBehaviour:
   gameObjectsToDisable: []
   hoverSFX: {fileID: 8300000, guid: 604adc90e3da32b4f8037c850195d21b, type: 3}
   clickSFX: {fileID: 8300000, guid: f0827c5b4470d834d956b66b0063183b, type: 3}
-  sceneAsset: {fileID: 102900000, guid: 8a5a4fe248243457893bde7aedae26c1, type: 3}
-  sceneName: GameScene
+  sceneAsset: {fileID: 102900000, guid: f655d28bc3b3d4a308272fea10b01e37, type: 3}
+  sceneName: PrologueScene
 --- !u!222 &793833644
 CanvasRenderer:
   m_ObjectHideFlags: 0
