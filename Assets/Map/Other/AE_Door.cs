@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using cowsins;
 using BioWarfare.InfectedZones;
+using System.Linq;
 
 namespace Art_Equilibrium
 {
@@ -39,8 +40,18 @@ namespace Art_Equilibrium
         [Tooltip("Color for locked message")]
         public Color lockedMessageColor = Color.red;
 
+        [Header("AI Settings")]
+        [Tooltip("Allow AI enemies to automatically open doors?")]
+        public bool aiCanOpenDoors = true;
+        [Tooltip("Auto-close delay after AI passes (seconds)")]
+        public float autoCloseDelay = 2f;
+
         private string doorMessage = "";
         private bool isLocked = false;
+        private int enemiesInTrigger = 0;
+        private bool autoOpenedForAI = false;
+        private float autoCloseTimer = 0f;
+        private Collider doorCollider; // Physical collider to disable when open
 
         [Header("Audio Settings")]
         public AudioClip openSound;
@@ -56,6 +67,45 @@ namespace Art_Equilibrium
             isKeyPressed = false;
 
             audioSource = gameObject.AddComponent<AudioSource>();
+            
+            // Get the door's physical collider (not the trigger)
+            // First try to find on this GameObject
+            Collider[] colliders = GetComponents<Collider>();
+            foreach (var col in colliders)
+            {
+                if (!col.isTrigger)
+                {
+                    doorCollider = col;
+                    Debug.Log($"[AE_Door] Found physical collider on door: {col.GetType().Name}");
+                    break;
+                }
+            }
+            
+            // If not found, check children (some door models have colliders on child objects)
+            if (doorCollider == null)
+            {
+                colliders = GetComponentsInChildren<Collider>();
+                foreach (var col in colliders)
+                {
+                    if (!col.isTrigger && col.gameObject != gameObject)
+                    {
+                        doorCollider = col;
+                        Debug.Log($"[AE_Door] Found physical collider on child: {col.gameObject.name}");
+                        break;
+                    }
+                }
+            }
+            
+            if (doorCollider == null)
+            {
+                Debug.LogError($"[AE_Door] ⚠️ NO PHYSICAL COLLIDER FOUND on '{gameObject.name}'!");
+                Debug.LogError($"[AE_Door] Door will NOT block enemies! You need to add a second Box Collider with 'Is Trigger' UNCHECKED.");
+                Debug.LogError($"[AE_Door] Current colliders: {string.Join(", ", GetComponents<Collider>().Select(c => c.isTrigger ? "Trigger" : "Physical"))}");
+            }
+            else
+            {
+                Debug.Log($"[AE_Door] ✅ Door setup complete. Physical blocking: {doorCollider.GetType().Name}");
+            }
             
             // Find the FPS Engine InputManager using Unity 2023+ API
             inputManager = FindFirstObjectByType<InputManager>();
@@ -84,6 +134,13 @@ namespace Art_Equilibrium
                 Quaternion targetRot = open ? openRot : defaultRot;
                 transform.rotation = Quaternion.Slerp(transform.rotation, targetRot, Time.deltaTime * smooth);
             }
+            
+            // Enable/disable physical collider based on door state
+            if (doorCollider != null)
+            {
+                // Disable collider when door is open so entities can pass
+                doorCollider.enabled = !open;
+            }
 
             // Update lock state if zone locking is enabled
             if (lockDuringZoneCapture && controllingZone != null)
@@ -105,6 +162,19 @@ namespace Art_Equilibrium
                 if (!inputManager.Interacting)
                 {
                     isKeyPressed = false;
+                }
+            }
+
+            // Auto-close timer for AI
+            if (autoOpenedForAI && enemiesInTrigger == 0 && open)
+            {
+                autoCloseTimer += Time.deltaTime;
+                if (autoCloseTimer >= autoCloseDelay)
+                {
+                    open = false;
+                    autoOpenedForAI = false;
+                    autoCloseTimer = 0f;
+                    Debug.Log("[AE_Door] Auto-closed after AI passed");
                 }
             }
 
@@ -155,6 +225,18 @@ namespace Art_Equilibrium
                 doorMessage = open ? closeMessage : openMessage;
                 trig = true;
             }
+            // Auto-open for AI enemies
+            else if (aiCanOpenDoors && !isLocked && IsEnemy(coll))
+            {
+                enemiesInTrigger++;
+                if (!open)
+                {
+                    open = true;
+                    autoOpenedForAI = true;
+                    autoCloseTimer = 0f;
+                    Debug.Log($"[AE_Door] Auto-opened for AI: {coll.name}");
+                }
+            }
         }
 
         private void OnTriggerExit(Collider coll)
@@ -164,6 +246,29 @@ namespace Art_Equilibrium
                 doorMessage = "";
                 trig = false;
             }
+            // Track AI enemies leaving
+            else if (IsEnemy(coll))
+            {
+                enemiesInTrigger--;
+                if (enemiesInTrigger < 0) enemiesInTrigger = 0;
+                Debug.Log($"[AE_Door] AI left trigger. Enemies remaining: {enemiesInTrigger}");
+            }
+        }
+
+        /// <summary>
+        /// Check if collider belongs to an enemy
+        /// </summary>
+        private bool IsEnemy(Collider coll)
+        {
+            // Check for Emerald AI component
+            if (coll.GetComponent<EmeraldAI.EmeraldSystem>() != null)
+                return true;
+            
+            // Check for Enemy tag
+            if (coll.CompareTag("Enemy"))
+                return true;
+            
+            return false;
         }
 
         private void PlayDoorSound()

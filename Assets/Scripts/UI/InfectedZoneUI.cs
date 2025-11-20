@@ -38,6 +38,7 @@ namespace BioWarfare.InfectedZones
 
         private InfectedZoneController currentZone;
         private Coroutine notificationCoroutine;
+        private Coroutine pillarHealthCoroutine;
 
         #region Unity Lifecycle
 
@@ -48,6 +49,14 @@ namespace BioWarfare.InfectedZones
             {
                 GameProgressManager.Instance.OnProgressUpdated.AddListener(UpdateGlobalProgress);
                 GameProgressManager.Instance.OnAllZonesCleansed.AddListener(OnAllZonesCleansed);
+                
+                // Delay initialization to let zones register first
+                StartCoroutine(InitializeAfterZones());
+            }
+            else
+            {
+                Debug.LogWarning("[InfectedZoneUI] GameProgressManager not found! Global progress will not work.");
+                UpdateGlobalProgress(0, 5); // Show 0/5 as fallback
             }
 
             // Hide capture UI initially
@@ -56,8 +65,9 @@ namespace BioWarfare.InfectedZones
 
             if (pillarPanel != null)
                 pillarPanel.SetActive(false);
-
-            UpdateGlobalProgress(0, 0);
+            
+            if (notificationPanel != null)
+                notificationPanel.SetActive(false);
         }
 
         void Update()
@@ -65,7 +75,49 @@ namespace BioWarfare.InfectedZones
             // Update capture progress if player is in a zone
             if (currentZone != null && showCaptureUI)
             {
-                UpdateCaptureProgress();
+            UpdateCaptureProgress();
+            }
+        }
+
+        #endregion
+
+        #region Initialization
+
+        /// <summary>
+        /// Wait for zones to register before initializing UI
+        /// </summary>
+        private System.Collections.IEnumerator InitializeAfterZones()
+        {
+            // Wait for next frame to let zones register
+            yield return new WaitForEndOfFrame();
+            yield return new WaitForSeconds(0.2f);
+            
+            if (GameProgressManager.Instance != null)
+            {
+                int totalZones = GameProgressManager.Instance.GetTotalZones();
+                int cleansedZones = GameProgressManager.Instance.GetCleansedZones();
+                
+                // If still 0 zones registered, it means we need to wait longer or there's an issue
+                if (totalZones == 0)
+                {
+                    Debug.LogWarning("[InfectedZoneUI] No zones registered yet! Waiting...");
+                    yield return new WaitForSeconds(0.3f);
+                    totalZones = GameProgressManager.Instance.GetTotalZones();
+                    cleansedZones = GameProgressManager.Instance.GetCleansedZones();
+                }
+                
+                UpdateGlobalProgress(cleansedZones, totalZones);
+                Debug.Log($"[InfectedZoneUI] Initialized with {cleansedZones}/{totalZones} zones");
+
+                // Show the first zone name hint if available
+                if (totalZones > 0 && zoneNameText != null)
+                {
+                    string firstZoneName = GameProgressManager.Instance.GetCurrentZoneName();
+                    if (!string.IsNullOrEmpty(firstZoneName) && firstZoneName != "None")
+                    {
+                        Debug.Log($"[InfectedZoneUI] First zone available: {firstZoneName}");
+                    }
+                }
             }
         }
 
@@ -143,8 +195,8 @@ namespace BioWarfare.InfectedZones
         {
             if (currentZone == null) return;
 
-            // Access progress using reflection since it's private in PointCapture
-            float progress = GetCaptureProgress(currentZone);
+            // Get progress from ZoneCaptureSystem
+            float progress = currentZone.GetCaptureProgress();
 
             if (captureProgressBar != null)
             {
@@ -168,30 +220,6 @@ namespace BioWarfare.InfectedZones
             }
         }
 
-        /// <summary>
-        /// Gets capture progress using reflection (PointCapture.progress is private)
-        /// </summary>
-        private float GetCaptureProgress(InfectedZoneController zone)
-        {
-            try
-            {
-                var progressField = typeof(cowsins.PointCapture).GetField("progress", 
-                    System.Reflection.BindingFlags.NonPublic | 
-                    System.Reflection.BindingFlags.Instance);
-                
-                if (progressField != null)
-                {
-                    return (float)progressField.GetValue(zone);
-                }
-            }
-            catch (System.Exception ex)
-            {
-                Debug.LogWarning($"[InfectedZoneUI] Could not access progress field: {ex.Message}");
-            }
-            
-            return 0f;
-        }
-
         #endregion
 
         #region Pillar UI
@@ -207,8 +235,25 @@ namespace BioWarfare.InfectedZones
             if (pillarPromptText != null)
                 pillarPromptText.text = "Destroy the Infection Pillar!";
 
-            // Subscribe to pillar updates (you'd need to add an event to PillarDamageReceiver)
-            StartCoroutine(UpdatePillarHealth(pillar));
+            // Set pillar health bar color to purple
+            if (pillarHealthBar != null)
+            {
+                var fillImage = pillarHealthBar.fillRect?.GetComponent<UnityEngine.UI.Image>();
+                if (fillImage != null)
+                {
+                    fillImage.color = new Color(0.6f, 0.2f, 1f); // Purple color
+                    Debug.Log("[InfectedZoneUI] Pillar health bar color set to purple");
+                }
+            }
+
+            // Stop previous coroutine if running
+            if (pillarHealthCoroutine != null)
+            {
+                StopCoroutine(pillarHealthCoroutine);
+            }
+
+            // Start updating pillar health
+            pillarHealthCoroutine = StartCoroutine(UpdatePillarHealth(pillar));
         }
 
         /// <summary>
@@ -216,25 +261,50 @@ namespace BioWarfare.InfectedZones
         /// </summary>
         public void HidePillarUI()
         {
+            // Stop the health update coroutine
+            if (pillarHealthCoroutine != null)
+            {
+                StopCoroutine(pillarHealthCoroutine);
+                pillarHealthCoroutine = null;
+            }
+
             if (pillarPanel != null)
                 pillarPanel.SetActive(false);
         }
 
         /// <summary>
-        /// Updates pillar health bar
+        /// Updates pillar health bar continuously
         /// </summary>
         private System.Collections.IEnumerator UpdatePillarHealth(PillarDamageReceiver pillar)
         {
+            if (pillar == null)
+            {
+                Debug.LogWarning("[InfectedZoneUI] Pillar is null, cannot update health bar");
+                yield break;
+            }
+
+            Debug.Log($"[InfectedZoneUI] Started pillar health tracking");
+
             while (pillar != null && !pillar.IsDestroyed())
             {
                 if (pillarHealthBar != null)
                 {
+                    float healthPercent = pillar.GetHealthPercent();
                     pillarHealthBar.maxValue = 1f;
-                    pillarHealthBar.value = pillar.GetHealthPercent();
+                    pillarHealthBar.value = healthPercent;
+                    
+                    // Debug every second to track updates
+                    if (Time.frameCount % 60 == 0)
+                    {
+                        Debug.Log($"[InfectedZoneUI] Pillar health: {healthPercent * 100:F1}%");
+                    }
                 }
-                yield return new WaitForSeconds(0.1f);
+                
+                // Update every frame for smooth visual feedback
+                yield return null;
             }
 
+            Debug.Log("[InfectedZoneUI] Pillar destroyed, hiding UI");
             HidePillarUI();
         }
 

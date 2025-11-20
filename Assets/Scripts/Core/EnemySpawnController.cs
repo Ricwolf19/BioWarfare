@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -28,6 +29,9 @@ namespace BioWarfare.InfectedZones
         private Transform playerTransform;
         private Coroutine spawnCoroutine;
         private List<GameObject> spawnedBosses = new List<GameObject>();
+
+        // Event fired when an enemy is spawned
+        public UnityEvent<GameObject> OnEnemySpawned = new UnityEvent<GameObject>();
 
         #region Initialization
 
@@ -171,6 +175,9 @@ namespace BioWarfare.InfectedZones
                 // Track enemy for cleanup
                 EnemyTracker tracker = enemy.AddComponent<EnemyTracker>();
                 tracker.controller = this;
+
+                // Notify listeners that an enemy was spawned
+                OnEnemySpawned?.Invoke(enemy);
             }
         }
 
@@ -286,6 +293,10 @@ namespace BioWarfare.InfectedZones
                     if (tracker == null)
                         tracker = boss.AddComponent<EnemyTracker>();
                     tracker.controller = this;
+
+                    // Notify listeners that a boss was spawned
+                    OnEnemySpawned?.Invoke(boss);
+
                     
                     Debug.Log($"[SpawnController] Boss spawned: {boss.name} ({i + 1}/{zoneData.bossEnemyPrefabs.Length})");
                 }

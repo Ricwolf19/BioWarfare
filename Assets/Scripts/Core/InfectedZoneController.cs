@@ -31,6 +31,7 @@ namespace BioWarfare.InfectedZones
         private EnemySpawnController spawnController;
         private PillarDamageReceiver pillarDamageReceiver;
         private AudioSource audioSource;
+        private InfectedZoneUI zoneUI;
 
         #region Unity Lifecycle
 
@@ -96,6 +97,13 @@ namespace BioWarfare.InfectedZones
             else
             {
                 Debug.LogError("[InfectedZone] GameProgressManager not found!");
+            }
+            
+            // Find UI reference
+            zoneUI = FindObjectOfType<InfectedZoneUI>();
+            if (zoneUI == null)
+            {
+                Debug.LogWarning("[InfectedZone] InfectedZoneUI not found in scene!");
             }
         }
 
@@ -254,6 +262,15 @@ namespace BioWarfare.InfectedZones
                 Debug.Log($"[Zone {zoneData?.zoneName}] Notified GameProgressManager - Zone Complete!");
             }
 
+            // Hide all UI for this zone
+            if (zoneUI != null)
+            {
+                zoneUI.HideZoneCaptureUI();
+                zoneUI.HidePillarUI();
+                zoneUI.ShowNotification($"Zone {zoneData?.zoneName} Cleansed!");
+                Debug.Log($"[Zone] All UI hidden, notification shown");
+            }
+
             zoneEvents.OnZoneCleansed?.Invoke();
 
             // Disable trigger
@@ -312,6 +329,14 @@ namespace BioWarfare.InfectedZones
                 
                 captureSystem.StartCapture();
                 
+                // Show UI capture panel (for both first entry and re-entry)
+                if (zoneUI != null && currentState == ZoneState.Capturing)
+                {
+                    zoneUI.ShowZoneCaptureUI(this);
+                    float currentProgress = captureSystem.GetProgress();
+                    Debug.Log($"[Zone] Capture UI shown - resuming at {currentProgress:F1}%");
+                }
+                
                 // Only transition to Capturing state if we're currently Active
                 if (currentState == ZoneState.Active)
                 {
@@ -320,6 +345,13 @@ namespace BioWarfare.InfectedZones
                     spawnController.StartSpawning();
                     
                     SetState(ZoneState.Capturing);
+
+                    // Show UI capture panel for first entry
+                    if (zoneUI != null)
+                    {
+                        zoneUI.ShowZoneCaptureUI(this);
+                        Debug.Log($"[Zone] Capture UI shown for {zoneData?.zoneName}");
+                    }
 
                     // Play enter sound only on first entry
                     if (zoneData?.zoneEnterSound != null && audioSource != null)
@@ -340,6 +372,14 @@ namespace BioWarfare.InfectedZones
                 Debug.Log($"[Zone] Player exited (Progress will be preserved)");
                 
                 captureSystem.StopCapture();
+                
+                // Hide UI capture panel
+                if (zoneUI != null)
+                {
+                    zoneUI.HideZoneCaptureUI();
+                    Debug.Log($"[Zone] Capture UI hidden");
+                }
+                
                 zoneEvents.OnPlayerExited?.Invoke();
             }
         }
@@ -357,6 +397,20 @@ namespace BioWarfare.InfectedZones
         {
             Debug.Log($"[Zone] Capture completed - pillar is now vulnerable");
             SetState(ZoneState.PillarVulnerable);
+            
+            // Hide capture UI and show pillar UI
+            if (zoneUI != null)
+            {
+                zoneUI.HideZoneCaptureUI();
+                
+                // Show pillar UI if we have a pillar
+                if (pillarDamageReceiver != null)
+                {
+                    zoneUI.ShowPillarUI(pillarDamageReceiver);
+                }
+                
+                Debug.Log($"[Zone] Switched UI from capture to pillar");
+            }
             
             // NOTE: Zone is NOT cleansed yet - must destroy pillar and defeat bosses first!
         }

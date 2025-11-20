@@ -137,7 +137,8 @@ namespace BioWarfare.Backend
 
             if (string.IsNullOrEmpty(stats.PlayerName))
             {
-                Debug.LogWarning("[FirebaseManager] No player name set!");
+                Debug.LogWarning("[FirebaseManager] Cannot upload stats: Player name not set! Did you start from MainMenu?");
+                Debug.LogWarning("[FirebaseManager] To fix: Always start game from MainMenu scene, or PlayerStatsTracker will auto-generate a name.");
                 return false;
             }
 

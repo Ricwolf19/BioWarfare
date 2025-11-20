@@ -166,7 +166,9 @@ namespace BioWarfare.InfectedZones
         #region Public API
 
         public int GetCleansedCount() => cleansedZones;
+        public int GetCleansedZones() => cleansedZones; // Alias for UI compatibility
         public int GetTotalCount() => totalZones;
+        public int GetTotalZones() => totalZones; // Alias for UI compatibility
         public float GetProgressPercent() => totalZones > 0 ? (float)cleansedZones / totalZones : 0f;
         public int GetRemainingZones() => totalZones - cleansedZones;
         public string GetCurrentZoneName() => currentZoneIndex < sortedZones.Count ? sortedZones[currentZoneIndex].GetZoneData().zoneName : "None";

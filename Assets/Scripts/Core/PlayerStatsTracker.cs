@@ -48,6 +48,20 @@ namespace BioWarfare.Stats
             DontDestroyOnLoad(gameObject);
         }
 
+        /// <summary>
+        /// Auto-start game if testing directly from GameScene
+        /// </summary>
+        private void Start()
+        {
+            // If game is being tested directly (not from menu), auto-start with random name
+            if (string.IsNullOrEmpty(PlayerName) && !IsGameActive)
+            {
+                string autoName = GenerateRandomPlayerName();
+                Debug.LogWarning($"[PlayerStatsTracker] No player name set! Auto-starting game as '{autoName}' (for testing)");
+                StartNewGame(autoName);
+            }
+        }
+
         #region Game Flow
 
         /// <summary>

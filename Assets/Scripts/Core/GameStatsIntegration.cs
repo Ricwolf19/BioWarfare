@@ -30,8 +30,11 @@ namespace BioWarfare.Integration
 
         private void Start()
         {
-            // Subscribe to enemy death events
+            // Subscribe to enemy death events for existing enemies
             SubscribeToEnemyEvents();
+
+            // Subscribe to spawn controllers for dynamically spawned enemies
+            SubscribeToSpawnControllers();
 
             // Subscribe to zone events
             SubscribeToZoneEvents();
@@ -39,25 +42,67 @@ namespace BioWarfare.Integration
 
         #region Enemy Kill Tracking
 
+        /// <summary>
+        /// Subscribe to pre-existing enemies in the scene
+        /// </summary>
         private void SubscribeToEnemyEvents()
         {
             // Find all enemies in scene and subscribe to their death events
             EmeraldSystem[] enemies = FindObjectsByType<EmeraldSystem>(FindObjectsSortMode.None);
             foreach (var enemy in enemies)
             {
-                var health = enemy.GetComponent<EmeraldHealth>();
-                if (health != null)
-                {
-                    health.OnDeath += OnEnemyKilled;
-                }
+                SubscribeToEnemy(enemy.gameObject);
             }
 
-            Debug.Log($"[GameStatsIntegration] Subscribed to {enemies.Length} enemies.");
+            Debug.Log($"[GameStatsIntegration] Subscribed to {enemies.Length} pre-existing enemies.");
+        }
+
+        /// <summary>
+        /// Subscribe to all enemy spawn controllers to track dynamically spawned enemies
+        /// </summary>
+        private void SubscribeToSpawnControllers()
+        {
+            var spawnControllers = FindObjectsByType<EnemySpawnController>(FindObjectsSortMode.None);
+            foreach (var controller in spawnControllers)
+            {
+                controller.OnEnemySpawned.AddListener(OnEnemySpawnedFromController);
+            }
+
+            Debug.Log($"[GameStatsIntegration] Subscribed to {spawnControllers.Length} spawn controllers.");
+        }
+
+        /// <summary>
+        /// Called when an enemy is spawned by a spawn controller
+        /// </summary>
+        private void OnEnemySpawnedFromController(GameObject enemy)
+        {
+            if (enemy != null)
+            {
+                SubscribeToEnemy(enemy);
+                Debug.Log($"[GameStatsIntegration] Subscribed to dynamically spawned enemy: {enemy.name}");
+            }
+        }
+
+        /// <summary>
+        /// Subscribe to a single enemy's death event
+        /// </summary>
+        private void SubscribeToEnemy(GameObject enemyObject)
+        {
+            var health = enemyObject.GetComponent<EmeraldHealth>();
+            if (health != null)
+            {
+                health.OnDeath += OnEnemyKilled;
+            }
+            else
+            {
+                Debug.LogWarning($"[GameStatsIntegration] Enemy {enemyObject.name} has no EmeraldHealth component!");
+            }
         }
 
         private void OnEnemyKilled()
         {
             PlayerStatsTracker.Instance.AddEnemyKill();
+            Debug.Log($"[GameStatsIntegration] Enemy killed. Total: {PlayerStatsTracker.Instance.EnemiesKilled}");
         }
 
         #endregion
@@ -91,7 +136,7 @@ namespace BioWarfare.Integration
 
         private void OnDestroy()
         {
-            // Unsubscribe from all events to prevent memory leaks
+            // Unsubscribe from all enemies
             EmeraldSystem[] enemies = FindObjectsByType<EmeraldSystem>(FindObjectsSortMode.None);
             foreach (var enemy in enemies)
             {
@@ -100,6 +145,13 @@ namespace BioWarfare.Integration
                 {
                     health.OnDeath -= OnEnemyKilled;
                 }
+            }
+
+            // Unsubscribe from spawn controllers
+            var spawnControllers = FindObjectsByType<EnemySpawnController>(FindObjectsSortMode.None);
+            foreach (var controller in spawnControllers)
+            {
+                controller.OnEnemySpawned.RemoveListener(OnEnemySpawnedFromController);
             }
 
             // Unsubscribe from progress manager
