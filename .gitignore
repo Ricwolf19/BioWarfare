@@ -98,5 +98,9 @@ InitTestScene*.unity*
 # Auto-generated scenes by play mode tests
 /[Aa]ssets/[Ii]nit[Tt]est[Ss]cene*.unity*
 
-# Gemini markdown files
-GEMINI.md
+# Firebase binaries (too large for GitHub)
+Assets/Firebase/Plugins/**/*.so
+Assets/Firebase/Plugins/**/*.bundle
+Assets/Firebase/Plugins/**/*.dll
+Assets/Firebase/Plugins/**/*.a
+Assets/Firebase/Plugins/**/*.jar
