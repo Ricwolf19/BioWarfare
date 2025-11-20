@@ -100,6 +100,3 @@ InitTestScene*.unity*
 
 # Gemini markdown files
 GEMINI.md
-
-# temporarly disabled github workflow
-.github/*
