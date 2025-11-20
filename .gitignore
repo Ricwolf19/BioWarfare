@@ -104,3 +104,9 @@ Assets/Firebase/Plugins/**/*.bundle
 Assets/Firebase/Plugins/**/*.dll
 Assets/Firebase/Plugins/**/*.a
 Assets/Firebase/Plugins/**/*.jar
+
+Assets/GoogleService-Info.plist
+Assets/GoogleService-Info.plist.meta
+Assets/google-services.json
+Assets/google-services.json.meta
+
