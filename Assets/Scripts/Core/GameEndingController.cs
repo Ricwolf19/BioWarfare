@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using cowsins;
+using BioWarfare.Stats;
+using BioWarfare.Backend;
 
 namespace BioWarfare.GameFlow
 {
@@ -124,6 +126,12 @@ namespace BioWarfare.GameFlow
             isEnding = true;
 
             Debug.Log("[GameEndingController] Extraction triggered! Starting game ending sequence...");
+
+            // End game tracking (player won!)
+            PlayerStatsTracker.Instance.EndGame(died: false);
+
+            // Upload stats to Firebase
+            UploadStatsToFirebase();
 
             StartExtractionSequence();
         }
@@ -279,6 +287,26 @@ namespace BioWarfare.GameFlow
                 float labelY = (screenHeight - totalHeight) * 0.5f;
 
                 GUI.Label(new Rect(labelX, labelY, totalWidth, totalHeight), interactionMessage, style);
+            }
+        }
+
+        #endregion
+
+        #region Firebase Integration
+
+        private async void UploadStatsToFirebase()
+        {
+            Debug.Log("[GameEndingController] Uploading player stats to Firebase...");
+
+            bool success = await FirebaseManager.Instance.UploadCurrentGameStats();
+
+            if (success)
+            {
+                Debug.Log("[GameEndingController] Stats uploaded successfully!");
+            }
+            else
+            {
+                Debug.LogWarning("[GameEndingController] Failed to upload stats (Firebase may be disabled).");
             }
         }
 
